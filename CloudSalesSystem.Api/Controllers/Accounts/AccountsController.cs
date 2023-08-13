@@ -1,7 +1,4 @@
-﻿using CloudSalesSystem.Application.Accounts.GetAccounts;
-using MediatR;
-
-namespace CloudSalesSystem.Api.Controllers.Accounts;
+﻿namespace CloudSalesSystem.Api.Controllers.Accounts;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -15,10 +12,9 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAccounts(Guid customerId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAccounts([FromQuery] GetAccountsQuery request, CancellationToken cancellationToken)
     {
-        var query = new GetAccountsQuery(customerId);
-        var result = await _sender.Send(query, cancellationToken);
+        var result = await _sender.Send(request, cancellationToken);
         return Ok(result);
     }
 }
