@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\Clock\" />
+    <Folder Include="Abstractions\CloudComputing\Models\" />
     <Folder Include="Abstractions\Data\" />
   </ItemGroup>
 
