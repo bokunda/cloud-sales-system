@@ -12,8 +12,13 @@ public sealed class SubscriptionItem : Entity<Guid>
         int quantity,
         SubscriptionItemState state,
         DateTime validToDate)
+        : base(id)
     {
-        
+        SubscriptionId = subscriptionId;
+        ProductId = productId;
+        Quantity = quantity;
+        State = state;
+        ValidToDate = validToDate;
     }
 
     public Guid ProductId { get; private set; }
@@ -29,7 +34,7 @@ public sealed class SubscriptionItem : Entity<Guid>
     public static SubscriptionItem Create(Guid subscriptionId, Guid productId, int quantity, DateTime validToDate)
     {
         var subscriptionItem = new SubscriptionItem(
-            Guid.NewGuid(),
+            SequentialGuidGenerator.Generate(),
             subscriptionId,
             productId,
             quantity,

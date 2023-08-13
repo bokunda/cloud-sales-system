@@ -19,7 +19,7 @@ public sealed class License : Entity<Guid>
 
     public static License Create(Guid? accountId, Guid subscriptionItemId)
     {
-        var license = new License(Guid.NewGuid(), accountId, subscriptionItemId);
+        var license = new License(SequentialGuidGenerator.Generate(), accountId, subscriptionItemId);
         license.RaiseDomainEvent(new CreateLicenseDomainEvent(license.Id));
         return license;
     }

@@ -1,7 +1,4 @@
-﻿using CloudSalesSystem.Domain.CustomerSubscriptions;
-using CloudSalesSystem.Domain.Subscriptions.Events;
-
-namespace CloudSalesSystem.Domain.Subscriptions;
+﻿namespace CloudSalesSystem.Domain.Subscriptions;
 
 public sealed class Subscription : Entity<Guid>
 {
@@ -23,7 +20,7 @@ public sealed class Subscription : Entity<Guid>
 
     public static Subscription Create(string name, string description)
     {
-        var subscription = new Subscription(Guid.NewGuid(), name, description);
+        var subscription = new Subscription(SequentialGuidGenerator.Generate(), name, description);
         subscription.RaiseDomainEvent(new CreateSubscriptionDomainEvent(subscription.Id));
         return subscription;
     }

@@ -23,7 +23,7 @@ public sealed class Account : Entity<Guid>
 
     public static Account Create(string name, string? description, Guid customerId)
     {
-        var account = new Account(Guid.NewGuid(), name, description, customerId);
+        var account = new Account(SequentialGuidGenerator.Generate(), name, description, customerId);
         account.RaiseDomainEvent(new AccountCreatedDomainEvent(account.Id));
         return account;
     }

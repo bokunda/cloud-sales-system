@@ -24,7 +24,7 @@ public sealed class Product : Entity<Guid>
 
     public static Product Create(string name, string? description, string provider)
     {
-        var product = new Product(Guid.NewGuid(), name, description, provider);
+        var product = new Product(SequentialGuidGenerator.Generate(), name, description, provider);
         product.RaiseDomainEvent(new CreateProductDomainEvent(product.Id));
         return product;
     }

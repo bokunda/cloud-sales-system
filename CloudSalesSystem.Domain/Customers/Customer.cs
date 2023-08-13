@@ -1,7 +1,4 @@
-﻿using CloudSalesSystem.Domain.Customers.Events;
-using CloudSalesSystem.Domain.CustomerSubscriptions;
-
-namespace CloudSalesSystem.Domain.Customers;
+﻿namespace CloudSalesSystem.Domain.Customers;
 
 public sealed class Customer : Entity<Guid>
 {
@@ -23,7 +20,7 @@ public sealed class Customer : Entity<Guid>
 
     public static Customer Create(string name, string description)
     {
-        var customer = new Customer(Guid.NewGuid(), name, description);
+        var customer = new Customer(SequentialGuidGenerator.Generate(), name, description);
         customer.RaiseDomainEvent(new CustomerCreatedDomainEvent(customer.Id));
         return customer;
     }
