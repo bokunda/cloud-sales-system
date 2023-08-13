@@ -13,9 +13,9 @@ public sealed class License : Entity<Guid>
     }
 
     public Guid? AccountId { get; private set; }
-    public Account Account = null!;
+    public Account Account { get; private set; } = null!;
     public Guid SubscriptionItemId { get; private set; }
-    public SubscriptionItem SubscriptionItem = null!;
+    public SubscriptionItem SubscriptionItem { get; private set; } = null!;
 
     public static License Create(Guid? accountId, Guid subscriptionItemId)
     {

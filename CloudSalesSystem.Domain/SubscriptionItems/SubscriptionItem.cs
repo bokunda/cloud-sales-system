@@ -22,12 +22,12 @@ public sealed class SubscriptionItem : Entity<Guid>
     }
 
     public Guid ProductId { get; private set; }
-    public Product Product { get; private set; }
+    public Product Product { get; private set; } = null!;
     public int Quantity { get; private set; }
     public SubscriptionItemState State { get; private set; }
     public DateTime ValidToDate { get; private set; }
     public Guid SubscriptionId { get; private set; }
-    public Subscription Subscription { get; private set; }
+    public Subscription Subscription { get; private set; } = null!;
 
     public ICollection<License> Licenses { get; } = new List<License>();
 

@@ -17,7 +17,7 @@ public sealed class Account : Entity<Guid>
     public string Name { get; private set; }
     public string? Description { get; private set; }
     public Guid CustomerId { get; private set; }
-    public Customer Customer { get; private set; }
+    public Customer Customer { get; private set; } = null!;
     public ICollection<License> Licenses { get; } = new List<License>();
 
 

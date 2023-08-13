@@ -11,9 +11,9 @@ public sealed class CustomerSubscription
     }
 
     public Guid CustomerId { get; private set; }
-    public Customer Customer { get; private set; }
+    public Customer Customer { get; private set; } = null!;
     public Guid SubscriptionId { get; private set; }
-    public Subscription Subscription { get; private set; }
+    public Subscription Subscription { get; private set; } = null!;
 
     public static CustomerSubscription Create(Guid customerId, Guid subscriptionId) => new (customerId, subscriptionId);
 }
