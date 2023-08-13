@@ -3,4 +3,5 @@
 global using CloudSalesSystem.Api.Extensions;
 global using CloudSalesSystem.Application;
 global using CloudSalesSystem.Infrastructure;
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
