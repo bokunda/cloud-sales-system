@@ -1,24 +1,39 @@
-﻿namespace CloudSalesSystem.Infrastructure.CloudComputing;
+﻿using Microsoft.Extensions.Caching.Memory;
+
+namespace CloudSalesSystem.Infrastructure.CloudComputing;
 
 public class CloudComputingService : ICloudComputingService
 {
     private readonly CloudComputingHttpClient _cloudComputingHttpClient;
+    private readonly IMemoryCache _memoryCache;
 
     private const string BaseUrl = "https://api.cloudcomputingprovider/services";
 
-    public CloudComputingService(CloudComputingHttpClient cloudComputingHttpClient)
+    public CloudComputingService(
+        CloudComputingHttpClient cloudComputingHttpClient,
+        IMemoryCache memoryCache)
     {
         _cloudComputingHttpClient = cloudComputingHttpClient;
+        _memoryCache = memoryCache;
     }
 
     public async Task<IReadOnlyCollection<AvailableServiceItem>> GetAvailableServices(CancellationToken cancellationToken)
     {
+        var cacheKey = $"{nameof(CloudComputingService)}:{nameof(GetAvailableServices)}";
+
+        if (_memoryCache.TryGetValue(cacheKey, out IReadOnlyCollection<AvailableServiceItem>? result) && result is not null)
+        {
+            return result;
+        }
+
         var response = await _cloudComputingHttpClient.GetHttpClientMock()
             .GetAsync($"{BaseUrl}/get-all", cancellationToken);
 
         var data = await response.Content
             .ReadFromJsonAsync<IReadOnlyCollection<AvailableServiceItem>>(cancellationToken: cancellationToken)
             ?? new List<AvailableServiceItem>();
+
+        _memoryCache.Set(cacheKey, data, TimeSpan.FromDays(1));
 
         return data;
     }
