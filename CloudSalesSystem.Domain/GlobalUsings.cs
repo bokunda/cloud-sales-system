@@ -10,6 +10,7 @@ global using CloudSalesSystem.Domain.Licenses;
 global using CloudSalesSystem.Domain.Licenses.Events;
 global using CloudSalesSystem.Domain.Shared;
 global using CloudSalesSystem.Domain.SubscriptionItems;
+global using CloudSalesSystem.Domain.SubscriptionItems.Events;
 global using CloudSalesSystem.Domain.Subscriptions;
 global using CloudSalesSystem.Domain.Subscriptions.Events;
 global using MediatR;

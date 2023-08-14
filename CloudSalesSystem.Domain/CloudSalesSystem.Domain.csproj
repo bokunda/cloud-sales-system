@@ -11,7 +11,6 @@
 		<Folder Include="CustomerSubscriptions\" />
 		<Folder Include="Customers\Events\" />
 		<Folder Include="Shared\" />
-		<Folder Include="Products\Events\" />
 		<Folder Include="SubscriptionItems\Events\" />
 		<Folder Include="Subscriptions\Events\" />
 	</ItemGroup>

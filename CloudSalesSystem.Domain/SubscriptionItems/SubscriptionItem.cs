@@ -1,7 +1,4 @@
-﻿using CloudSalesSystem.Domain.Products;
-using CloudSalesSystem.Domain.SubscriptionItems.Events;
-
-namespace CloudSalesSystem.Domain.SubscriptionItems;
+﻿namespace CloudSalesSystem.Domain.SubscriptionItems;
 
 public sealed class SubscriptionItem : Entity<Guid>
 {
@@ -9,6 +6,7 @@ public sealed class SubscriptionItem : Entity<Guid>
         Guid id,
         Guid subscriptionId,
         Guid productId,
+        string productName,
         int quantity,
         SubscriptionItemState state,
         DateTime validToDate)
@@ -16,13 +14,14 @@ public sealed class SubscriptionItem : Entity<Guid>
     {
         SubscriptionId = subscriptionId;
         ProductId = productId;
+        ProductName = productName;
         Quantity = quantity;
         State = state;
         ValidToDate = validToDate;
     }
 
     public Guid ProductId { get; private set; }
-    public Product Product { get; private set; } = null!;
+    public string ProductName { get; private set; }
     public int Quantity { get; private set; }
     public SubscriptionItemState State { get; private set; }
     public DateTime ValidToDate { get; private set; }
@@ -31,12 +30,13 @@ public sealed class SubscriptionItem : Entity<Guid>
 
     public ICollection<License> Licenses { get; } = new List<License>();
 
-    public static SubscriptionItem Create(Guid subscriptionId, Guid productId, int quantity, DateTime validToDate)
+    public static SubscriptionItem Create(Guid subscriptionId, Guid productId, string productName, int quantity, DateTime validToDate)
     {
         var subscriptionItem = new SubscriptionItem(
             SequentialGuidGenerator.Generate(),
             subscriptionId,
             productId,
+            productName,
             quantity,
             SubscriptionItemState.Active,
             validToDate);

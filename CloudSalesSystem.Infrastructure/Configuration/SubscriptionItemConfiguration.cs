@@ -18,10 +18,6 @@ internal sealed class SubscriptionItemConfiguration : IEntityTypeConfiguration<S
             .WithOne(license => license.SubscriptionItem)
             .HasForeignKey(license => license.SubscriptionItemId);
 
-        builder.HasOne(subscriptionItem => subscriptionItem.Product)
-            .WithMany(product => product.SubscriptionItems)
-            .HasForeignKey(subscriptionItem => subscriptionItem.ProductId);
-
         builder.HasOne(subscriptionItem => subscriptionItem.Subscription)
             .WithMany(subscription => subscription.SubscriptionItems)
             .HasForeignKey(subscriptionItem => subscriptionItem.SubscriptionId);
