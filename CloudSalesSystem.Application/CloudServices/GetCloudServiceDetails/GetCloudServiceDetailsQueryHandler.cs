@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using CloudSalesSystem.Application.Abstractions.CloudServices;
-
-namespace CloudSalesSystem.Application.CloudServices.GetCloudServiceDetails;
+﻿namespace CloudSalesSystem.Application.CloudServices.GetCloudServiceDetails;
 
 internal sealed class GetCloudServiceDetailsQueryHandler : IRequestHandler<GetCloudServiceDetailsQuery, GetCloudServiceDetailsResponse>
 {

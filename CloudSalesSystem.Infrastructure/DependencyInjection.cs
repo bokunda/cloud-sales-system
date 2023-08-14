@@ -1,4 +1,6 @@
-﻿namespace CloudSalesSystem.Infrastructure;
+﻿using CloudSalesSystem.Infrastructure.Repositories;
+
+namespace CloudSalesSystem.Infrastructure;
 
 public static class DependencyInjection
 {
@@ -26,6 +28,7 @@ public static class DependencyInjection
             options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
         });
 
+        services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<CloudSalesSystemDbContext>());
 
         services.AddSingleton<ISqlConnectionFactory>(_ =>

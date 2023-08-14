@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Application.Abstractions.CloudServices;
-
-namespace CloudSalesSystem.Application.CloudServices.GetCloudServices;
+﻿namespace CloudSalesSystem.Application.CloudServices.GetCloudServices;
 
 internal sealed class GetCloudServicesQueryHandler : IRequestHandler<GetCloudServicesQuery, IReadOnlyCollection<AvailableServiceItem>>
 {
