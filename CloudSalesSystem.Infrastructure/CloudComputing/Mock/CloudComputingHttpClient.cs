@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using CloudSalesSystem.Application.Abstractions.CloudServices.Models;
 using RichardSzalay.MockHttp;
 
 namespace CloudSalesSystem.Infrastructure.CloudComputing.Mock;

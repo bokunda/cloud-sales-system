@@ -5,12 +5,10 @@
 public class AccountsController : ControllerBase
 {
     private readonly ISender _sender;
-    private readonly ICloudComputingService _cloudComputingService;
 
-    public AccountsController(ISender sender, ICloudComputingService cloudComputingService)
+    public AccountsController(ISender sender)
     {
         _sender = sender;
-        _cloudComputingService = cloudComputingService;
     }
 
     [HttpGet]

@@ -1,4 +1,4 @@
-﻿namespace CloudSalesSystem.Application.Abstractions.CloudComputing;
+﻿namespace CloudSalesSystem.Application.Abstractions.CloudServices;
 
 public interface ICloudComputingService
 {

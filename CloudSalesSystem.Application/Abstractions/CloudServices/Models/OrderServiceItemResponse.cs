@@ -1,4 +1,4 @@
-﻿namespace CloudSalesSystem.Application.Abstractions.CloudComputing.Models;
+﻿namespace CloudSalesSystem.Application.Abstractions.CloudServices.Models;
 
 public sealed record OrderServiceItemResponse(
     Guid TransactionId,

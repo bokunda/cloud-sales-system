@@ -1,7 +1,6 @@
-﻿namespace CloudSalesSystem.Application.Paging
+﻿namespace CloudSalesSystem.Application.Paging;
+
+public interface IPagedRequestHandler<in TRequest, TResponse> : IRequestHandler<TRequest, PagedResponse<TResponse>>
+    where TRequest : PagedRequest<TResponse>
 {
-    public interface IPagedRequestHandler<in TRequest, TResponse> : IRequestHandler<TRequest, PagedResponse<TResponse>>
-        where TRequest : PagedRequest<TResponse>
-    {
-    }
 }

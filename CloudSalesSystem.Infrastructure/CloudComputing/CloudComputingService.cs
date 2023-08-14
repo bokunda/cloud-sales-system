@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using CloudSalesSystem.Application.Abstractions.CloudServices;
+using CloudSalesSystem.Application.Abstractions.CloudServices.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CloudSalesSystem.Infrastructure.CloudComputing;
 
