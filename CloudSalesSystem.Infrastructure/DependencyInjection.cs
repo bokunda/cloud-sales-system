@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Application.Abstractions.CloudServices;
-
-namespace CloudSalesSystem.Infrastructure;
+﻿namespace CloudSalesSystem.Infrastructure;
 
 public static class DependencyInjection
 {

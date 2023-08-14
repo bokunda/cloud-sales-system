@@ -1,8 +1,11 @@
 // Global using directives
 
 global using System.Data;
+global using System.Net;
 global using System.Net.Http.Json;
 global using CloudSalesSystem.Application.Abstractions.Clock;
+global using CloudSalesSystem.Application.Abstractions.CloudServices;
+global using CloudSalesSystem.Application.Abstractions.CloudServices.Models;
 global using CloudSalesSystem.Application.Abstractions.Data;
 global using CloudSalesSystem.Application.Exceptions;
 global using CloudSalesSystem.Domain.Abstractions;
@@ -20,6 +23,8 @@ global using Dapper;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Caching.Memory;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Npgsql;
+global using RichardSzalay.MockHttp;

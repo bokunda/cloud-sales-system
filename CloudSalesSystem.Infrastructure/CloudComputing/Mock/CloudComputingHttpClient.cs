@@ -1,8 +1,4 @@
-﻿using System.Net;
-using CloudSalesSystem.Application.Abstractions.CloudServices.Models;
-using RichardSzalay.MockHttp;
-
-namespace CloudSalesSystem.Infrastructure.CloudComputing.Mock;
+﻿namespace CloudSalesSystem.Infrastructure.CloudComputing.Mock;
 
 public class CloudComputingHttpClient
 {
@@ -17,7 +13,32 @@ public class CloudComputingHttpClient
         return handlerMock.ToHttpClient();
     }
 
-    public HttpClient GetHttpClientMock(Guid serviceId, int amount)
+    public HttpClient GetHttpClientMock(Guid serviceId)
+    {
+        var handlerMock = new MockHttpMessageHandler();
+        var service = GetAvailableServicesMockResponse().FirstOrDefault(service => service.Id == serviceId);
+
+        if (service is not null)
+        {
+            handlerMock.When($"https://api.cloudcomputingprovider/services/get?id={serviceId}")
+                .Respond(
+                    HttpStatusCode.OK,
+                    JsonContent.Create(new AvailableServiceItem(
+                        service.Id,
+                        service.Name,
+                        service.Description,
+                        service.Price)));
+        }
+        else
+        {
+            handlerMock.When($"https://api.cloudcomputingprovider/services/get?id={serviceId}")
+                .Respond(HttpStatusCode.NotFound, JsonContent.Create(new { }));
+        }
+
+        return handlerMock.ToHttpClient();
+    }
+
+    public HttpClient GetHttpClientMock(Guid serviceId, int amount, DateTime validToDate)
     {
         var handlerMock = new MockHttpMessageHandler();
         var service = GetAvailableServicesMockResponse().FirstOrDefault(service => service.Id == serviceId);
@@ -33,7 +54,8 @@ public class CloudComputingHttpClient
                         serviceId, 
                         amount,
                         service.Price,
-                        amount * service.Price)));
+                        amount * service.Price,
+                        validToDate)));
         }
         else
         {

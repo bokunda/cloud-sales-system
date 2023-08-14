@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace CloudSalesSystem.Application;
+﻿namespace CloudSalesSystem.Application;
 
 public static class DependencyInjection
 {
@@ -10,6 +8,8 @@ public static class DependencyInjection
         {
             configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
         });
+
+        services.AddAutoMapper(typeof(DependencyInjection).Assembly);
 
         return services;
     }

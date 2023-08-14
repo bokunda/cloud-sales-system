@@ -1,8 +1,4 @@
-﻿using CloudSalesSystem.Application.Abstractions.CloudServices;
-using CloudSalesSystem.Application.Abstractions.CloudServices.Models;
-using Microsoft.Extensions.Caching.Memory;
-
-namespace CloudSalesSystem.Infrastructure.CloudComputing;
+﻿namespace CloudSalesSystem.Infrastructure.CloudComputing;
 
 public class CloudComputingService : ICloudComputingService
 {
@@ -40,9 +36,20 @@ public class CloudComputingService : ICloudComputingService
         return data;
     }
 
+    public async Task<AvailableServiceItem> GetServiceDetails(Guid serviceId, CancellationToken cancellationToken)
+    {
+        var response = await _cloudComputingHttpClient.GetHttpClientMock(serviceId)
+            .GetAsync($"{BaseUrl}/get?id={serviceId}", cancellationToken);
+
+        var data = await response.Content.ReadFromJsonAsync<AvailableServiceItem>(cancellationToken: cancellationToken)
+                   ?? throw new Exception("Cloud Computing Service not found!");
+
+        return data;
+    }
+
     public async Task<OrderServiceItemResponse> OrderComputingServiceItem(OrderServiceItemRequest request, CancellationToken cancellationToken)
     {
-        var response = await _cloudComputingHttpClient.GetHttpClientMock(request.ServiceId, request.Amount)
+        var response = await _cloudComputingHttpClient.GetHttpClientMock(request.ServiceId, request.Amount, request.ValidToDate)
             .GetAsync($"{BaseUrl}/order?id={request.ServiceId}&amount={request.Amount}", cancellationToken);
 
         if (!response.IsSuccessStatusCode)

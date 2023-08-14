@@ -6,4 +6,5 @@ public sealed record OrderServiceItemResponse(
     Guid ServiceId,
     int TotalItems,
     decimal PricePerItem,
-    decimal TotalPrice);
+    decimal TotalPrice,
+    DateTime ValidToDate);
