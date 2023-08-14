@@ -1,4 +1,4 @@
-﻿namespace CloudSalesSystem.Application.Accounts;
+﻿namespace CloudSalesSystem.Application.Accounts.GetAccounts;
 
 public class AccountResponse
 {

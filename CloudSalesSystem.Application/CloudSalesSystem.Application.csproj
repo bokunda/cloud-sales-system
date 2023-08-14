@@ -10,6 +10,7 @@
     <Folder Include="Abstractions\Clock\" />
     <Folder Include="Abstractions\Data\" />
     <Folder Include="CloudServices\GetCloudServiceDetails\" />
+    <Folder Include="SubscriptionItems\GetSubscriptionItems\" />
   </ItemGroup>
 
   <ItemGroup>
