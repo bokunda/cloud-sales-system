@@ -28,4 +28,5 @@ public class Repository<TEntity, TEntityId> : IRepository<TEntity, TEntityId> wh
     }
 
     public void Delete(TEntity entity) => DbContext.Set<TEntity>().Remove(entity);
+    public void DeleteRange(IEnumerable<TEntity> entities) => DbContext.Set<TEntity>().RemoveRange(entities);
 }

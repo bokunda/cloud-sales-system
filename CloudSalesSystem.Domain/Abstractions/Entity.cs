@@ -14,7 +14,9 @@ public abstract class Entity<TEntityId> : IEntity, IEntityHasCreatedUpdated
     public TEntityId Id { get; init; }
     public DateTimeOffset CreatedOn { get; private set; }
     public DateTimeOffset UpdatedOn { get; private set; }
+    public bool IsDeleted { get; private set; }
 
+    public void SetIsDeleted(bool isDeleted = true) => IsDeleted = isDeleted;
     public IReadOnlyList<IDomainEvent> GetDomainEvents() => _domainEvents.ToList();
     public void ClearDomainEvents() => _domainEvents.Clear();
     protected void RaiseDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);

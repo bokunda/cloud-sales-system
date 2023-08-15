@@ -79,4 +79,9 @@ public class CloudComputingService : ICloudComputingService
 
         return data!;
     }
+
+    public async Task<bool> RevokeLicenseKeys(
+        IReadOnlyCollection<RevokeServiceItemLicenseKeyRequest> request,
+        CancellationToken cancellationToken = default) =>
+            await Task.FromResult(true);
 }

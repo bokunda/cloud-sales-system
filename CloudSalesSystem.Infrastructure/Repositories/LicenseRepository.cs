@@ -6,17 +6,21 @@ public class LicenseRepository : Repository<License, Guid>, ILicenseRepository
     {
     }
 
-    public async Task<ICollection<License>> GetUnassignedLicenses(CancellationToken cancellationToken = default) =>
+    public async Task<ICollection<License>> GetRevokedLicenses(Guid? subscriptionId, Guid? subscriptionItemId, CancellationToken cancellationToken = default) =>
         await DbContext
             .Set<License>()
             .QueryByNoAccountId()
+            .QueryBySubscriptionId(subscriptionId)
+            .QueryBySubscriptionItemId(subscriptionItemId)
             .QueryByActive()
             .ToListAsync(cancellationToken);
 
-    public async Task<int> GetAssignedLicensesCount(Guid subscriptionId, CancellationToken cancellationToken = default) =>
+    public async Task<int> GetAssignedLicensesCount(Guid? subscriptionId, Guid? subscriptionItemId, CancellationToken cancellationToken = default) =>
         await DbContext
             .Set<License>()
-            .QueryByNoSubscriptionId(subscriptionId)
+            .QueryBySubscriptionId(subscriptionId)
+            .QueryBySubscriptionItemId(subscriptionItemId)
+            .QueryByHasAccountId()
             .QueryByActive()
             .CountAsync(cancellationToken);
 }

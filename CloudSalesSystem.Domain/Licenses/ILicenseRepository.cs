@@ -2,6 +2,6 @@
 
 public interface ILicenseRepository : IRepository<License, Guid>
 {
-    Task<ICollection<License>> GetUnassignedLicenses(CancellationToken cancellationToken = default);
-    Task<int> GetAssignedLicensesCount(Guid subscriptionId, CancellationToken cancellationToken = default);
+    Task<ICollection<License>> GetRevokedLicenses(Guid? subscriptionId, Guid? subscriptionItemId, CancellationToken cancellationToken = default);
+    Task<int> GetAssignedLicensesCount(Guid? subscriptionId, Guid? subscriptionItemId, CancellationToken cancellationToken = default);
 }

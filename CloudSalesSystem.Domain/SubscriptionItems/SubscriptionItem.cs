@@ -43,4 +43,10 @@ public sealed class SubscriptionItem : Entity<Guid>
         subscriptionItem.RaiseDomainEvent(new CreateSubscriptionItemDomainEvent(subscriptionItem.Id));
         return subscriptionItem;
     }
+
+    public void SetQuantity(int quantity)
+    {
+        Quantity = quantity;
+        RaiseDomainEvent(new SetQuantitySubscriptionItemDomainEvent(Id, Quantity));
+    }
 }

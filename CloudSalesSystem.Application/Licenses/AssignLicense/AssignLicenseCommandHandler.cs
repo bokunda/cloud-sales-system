@@ -24,7 +24,7 @@ internal sealed class AssignLicenseCommandHandler : IRequestHandler<AssignLicens
         License? unassignedLicense = null;
 
         // Check do we have a license that is not assigned
-        var unassignedLicenses = await _licenseRepository.GetUnassignedLicenses(cancellationToken);
+        var unassignedLicenses = await _licenseRepository.GetRevokedLicenses(null, request.SubscriptionItemId, cancellationToken);
 
         if (unassignedLicenses.Any())
         {
@@ -34,7 +34,7 @@ internal sealed class AssignLicenseCommandHandler : IRequestHandler<AssignLicens
         else
         {
             // Check do we reached maximum limit of licenses
-            var assignedLicensesCount = await _licenseRepository.GetAssignedLicensesCount(request.SubscriptionItemId, cancellationToken);
+            var assignedLicensesCount = await _licenseRepository.GetAssignedLicensesCount(null, request.SubscriptionItemId, cancellationToken);
             var subscriptionItemDetails = await _subscriptionItemRepository.GetByIdAsync(request.SubscriptionItemId, cancellationToken);
 
             if (assignedLicensesCount >= subscriptionItemDetails!.Quantity)
