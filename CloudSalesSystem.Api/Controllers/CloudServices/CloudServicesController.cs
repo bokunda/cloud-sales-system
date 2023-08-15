@@ -20,7 +20,10 @@ public class CloudServicesController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost]
+    [HttpPost("order-service-license")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> OrderServiceLicense([FromBody] OrderLicenseCommand request,
         CancellationToken cancellationToken)
     {

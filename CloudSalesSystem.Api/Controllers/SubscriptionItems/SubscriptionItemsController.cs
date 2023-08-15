@@ -16,6 +16,7 @@ public class SubscriptionItemsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get([FromQuery] GetSubscriptionItemsQuery query, CancellationToken cancellationToken)
     {
         var result = await _sender.Send(query, cancellationToken);
@@ -23,6 +24,9 @@ public class SubscriptionItemsController : ControllerBase
     }
 
     [HttpPost("update-quantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> UpdateQuantity([FromBody] UpdateSubscriptionItemQuantityCommand command,
         CancellationToken cancellationToken)
     {
@@ -31,6 +35,9 @@ public class SubscriptionItemsController : ControllerBase
     }
 
     [HttpPost("update-valid-to")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> UpdateValidToDate([FromBody] UpdateValidToSubscriptionItemCommand command,
         CancellationToken cancellationToken)
     {

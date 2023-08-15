@@ -12,6 +12,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAccounts([FromQuery] GetAccountsQuery request, CancellationToken cancellationToken)
     {
         var result = await _sender.Send(request, cancellationToken);

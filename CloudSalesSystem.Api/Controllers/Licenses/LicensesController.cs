@@ -12,6 +12,9 @@ public class LicensesController : ControllerBase
     }
 
     [HttpPost("order-service-license")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> OrderServiceLicense([FromBody] AssignLicenseCommand request,
         CancellationToken cancellationToken)
     {
@@ -20,6 +23,9 @@ public class LicensesController : ControllerBase
     }
 
     [HttpPost("revoke-service-license")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RevokeServiceLicense([FromBody] RevokeServiceLicenseCommand request,
         CancellationToken cancellationToken)
     {
