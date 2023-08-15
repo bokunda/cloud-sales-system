@@ -14,5 +14,6 @@ global using CloudSalesSystem.Domain.Repositories;
 global using CloudSalesSystem.Domain.SubscriptionItems;
 global using Dapper;
 global using FluentValidation;
+global using FluentValidation.AspNetCore;
 global using MediatR;
 global using Microsoft.Extensions.DependencyInjection;

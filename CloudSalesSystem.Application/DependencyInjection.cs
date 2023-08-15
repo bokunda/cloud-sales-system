@@ -12,7 +12,9 @@ public static class DependencyInjection
             configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
 
+        services.AddFluentValidationAutoValidation();
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+
         services.AddAutoMapper(typeof(DependencyInjection).Assembly);
 
         return services;
