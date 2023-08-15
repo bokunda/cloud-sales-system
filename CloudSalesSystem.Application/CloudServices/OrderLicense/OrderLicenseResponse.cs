@@ -7,4 +7,4 @@ public record OrderLicenseResponse(Guid TransactionId,
     int TotalItems,
     decimal PricePerItem,
     decimal TotalPrice,
-    DateTime ValidToDate);
+    DateOnly ValidToDate);

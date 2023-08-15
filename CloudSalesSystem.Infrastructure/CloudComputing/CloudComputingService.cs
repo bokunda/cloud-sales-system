@@ -82,4 +82,9 @@ public class CloudComputingService : ICloudComputingService
         IReadOnlyCollection<RevokeServiceItemLicenseKeyRequest> request,
         CancellationToken cancellationToken = default) =>
             await Task.FromResult(true);
+
+    public async Task<bool> ExtendLicenseKeys(
+        IReadOnlyCollection<ExtendServiceItemLicenseKeyRequest> request,
+        CancellationToken cancellationToken = default) =>
+        await Task.FromResult(true);
 }

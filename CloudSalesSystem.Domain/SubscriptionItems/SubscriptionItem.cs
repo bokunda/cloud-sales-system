@@ -9,7 +9,7 @@ public sealed class SubscriptionItem : Entity<Guid>
         string productName,
         int quantity,
         SubscriptionItemState state,
-        DateTime validToDate)
+        DateOnly validToDate)
         : base(id)
     {
         SubscriptionId = subscriptionId;
@@ -24,13 +24,13 @@ public sealed class SubscriptionItem : Entity<Guid>
     public string ProductName { get; private set; }
     public int Quantity { get; private set; }
     public SubscriptionItemState State { get; private set; }
-    public DateTime ValidToDate { get; private set; }
+    public DateOnly ValidToDate { get; private set; }
     public Guid SubscriptionId { get; private set; }
     public Subscription Subscription { get; private set; } = null!;
 
     public ICollection<License> Licenses { get; } = new List<License>();
 
-    public static SubscriptionItem Create(Guid subscriptionId, Guid productId, string productName, int quantity, DateTime validToDate)
+    public static SubscriptionItem Create(Guid subscriptionId, Guid productId, string productName, int quantity, DateOnly validToDate)
     {
         var subscriptionItem = new SubscriptionItem(
             SequentialGuidGenerator.Generate(),
@@ -48,5 +48,11 @@ public sealed class SubscriptionItem : Entity<Guid>
     {
         Quantity = quantity;
         RaiseDomainEvent(new SetQuantitySubscriptionItemDomainEvent(Id, Quantity));
+    }
+
+    public void SetValidTo(DateOnly validToDate)
+    {
+        ValidToDate = validToDate;
+        RaiseDomainEvent(new SetValidToDateSubscriptionItemDomainEvent(Id, ValidToDate));
     }
 }

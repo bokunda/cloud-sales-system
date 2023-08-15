@@ -14,7 +14,7 @@ public static class LicenseQueryableExtensions
         query.Where(l => l.AccountId != null);
 
     public static IQueryable<License> QueryByActive(this IQueryable<License> query) =>
-        query.Where(l => l.SubscriptionItem.ValidToDate > DateTime.UtcNow);
+        query.Where(l => l.SubscriptionItem.ValidToDate > DateOnly.FromDateTime(DateTime.UtcNow));
 
     public static IQueryable<License> QueryBySubscriptionItemId(this IQueryable<License> query, Guid? subscriptionItemId) =>
         subscriptionItemId.HasValue

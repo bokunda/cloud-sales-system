@@ -1,5 +1,6 @@
 ﻿using CloudSalesSystem.Application.SubscriptionItems.GetSubscriptionItems;
 using CloudSalesSystem.Application.SubscriptionItems.UpdateQuantity;
+using CloudSalesSystem.Application.SubscriptionItems.UpdateValidTo;
 
 namespace CloudSalesSystem.Api.Controllers.SubscriptionItems;
 
@@ -21,8 +22,16 @@ public class SubscriptionItemsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> UpdateSubscriptionItemQuantity([FromBody] UpdateSubscriptionItemQuantityCommand command,
+    [HttpPost("update-quantity")]
+    public async Task<IActionResult> UpdateQuantity([FromBody] UpdateSubscriptionItemQuantityCommand command,
+        CancellationToken cancellationToken)
+    {
+        var result = await _sender.Send(command, cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpPost("update-valid-to")]
+    public async Task<IActionResult> UpdateValidToDate([FromBody] UpdateValidToSubscriptionItemCommand command,
         CancellationToken cancellationToken)
     {
         var result = await _sender.Send(command, cancellationToken);

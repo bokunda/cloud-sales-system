@@ -12,6 +12,7 @@
     <Folder Include="CloudServices\GetCloudServiceDetails\" />
     <Folder Include="Licenses\RevokeLicense\" />
     <Folder Include="SubscriptionItems\GetSubscriptionItems\" />
+    <Folder Include="SubscriptionItems\UpdateValidTo\" />
   </ItemGroup>
 
   <ItemGroup>

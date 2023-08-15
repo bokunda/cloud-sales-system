@@ -7,4 +7,5 @@ public interface ICloudComputingService
     Task<OrderServiceItemResponse> OrderComputingServiceItem(OrderServiceItemRequest request, CancellationToken cancellationToken = default);
     Task<IReadOnlyCollection<ServiceItemLicenseKeyResponse>> GetServiceItemLicenseKeys(ServiceItemLicenseKeyRequest request, CancellationToken cancellationToken = default);
     Task<bool> RevokeLicenseKeys(IReadOnlyCollection<RevokeServiceItemLicenseKeyRequest> request, CancellationToken cancellationToken = default);
+    Task<bool> ExtendLicenseKeys(IReadOnlyCollection<ExtendServiceItemLicenseKeyRequest> request, CancellationToken cancellationToken = default);
 }

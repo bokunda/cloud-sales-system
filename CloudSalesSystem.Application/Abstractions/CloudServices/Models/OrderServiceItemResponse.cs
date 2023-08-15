@@ -7,4 +7,4 @@ public sealed record OrderServiceItemResponse(
     int TotalItems,
     decimal PricePerItem,
     decimal TotalPrice,
-    DateTime ValidToDate);
+    DateOnly ValidToDate);

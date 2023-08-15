@@ -14,6 +14,12 @@ public class Repository<TEntity, TEntityId> : IRepository<TEntity, TEntityId> wh
             .Set<TEntity>()
             .ToListAsync(cancellationToken);
 
+    public async Task<IEnumerable<TEntity>> GetByIdsAsync(IEnumerable<TEntityId> ids, CancellationToken cancellationToken = default) =>
+        await DbContext
+            .Set<TEntity>()
+            .Where(entity => ids.Contains(entity.Id))
+            .ToListAsync(cancellationToken);
+
     public async Task<TEntity?> GetByIdAsync(TEntityId id, CancellationToken cancellationToken = default) =>
         await DbContext
             .Set<TEntity>()

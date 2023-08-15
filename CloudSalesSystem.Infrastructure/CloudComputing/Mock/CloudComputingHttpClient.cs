@@ -38,7 +38,7 @@ public class CloudComputingHttpClient
         return handlerMock.ToHttpClient();
     }
 
-    public HttpClient GetHttpClientMock(Guid serviceId, int amount, DateTime validToDate)
+    public HttpClient GetHttpClientMock(Guid serviceId, int amount, DateOnly validToDate)
     {
         var handlerMock = new MockHttpMessageHandler();
         var service = GetAvailableServicesMockResponse().FirstOrDefault(service => service.Id == serviceId);

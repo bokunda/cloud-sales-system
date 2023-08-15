@@ -4,4 +4,4 @@ public sealed record OrderLicenseCommand(
     Guid SubscriptionId,
     Guid ServiceId,
     int Amount,
-    DateTime ValidToDate) : IRequest<OrderLicenseResponse>;
+    DateOnly ValidToDate) : IRequest<OrderLicenseResponse>;

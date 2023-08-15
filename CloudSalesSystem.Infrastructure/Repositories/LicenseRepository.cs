@@ -23,4 +23,13 @@ public class LicenseRepository : Repository<License, Guid>, ILicenseRepository
             .QueryByHasAccountId()
             .QueryByActive()
             .CountAsync(cancellationToken);
+
+    public async Task<ICollection<License>> GetAssignedLicenses(Guid? subscriptionId, Guid? subscriptionItemId, CancellationToken cancellationToken = default) =>
+        await DbContext
+            .Set<License>()
+            .QueryBySubscriptionId(subscriptionId)
+            .QueryBySubscriptionItemId(subscriptionItemId)
+            .QueryByHasAccountId()
+            .QueryByActive()
+            .ToListAsync(cancellationToken);
 }
