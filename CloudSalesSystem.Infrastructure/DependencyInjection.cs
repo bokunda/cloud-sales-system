@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Infrastructure.Repositories;
-
-namespace CloudSalesSystem.Infrastructure;
+﻿namespace CloudSalesSystem.Infrastructure;
 
 public static class DependencyInjection
 {
@@ -29,6 +27,10 @@ public static class DependencyInjection
         });
 
         services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+
+        services.AddScoped<ISubscriptionItemRepository, SubscriptionItemRepository>();
+        services.AddScoped<ILicenseRepository, LicenseRepository>();
+
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<CloudSalesSystemDbContext>());
 
         services.AddSingleton<ISqlConnectionFactory>(_ =>

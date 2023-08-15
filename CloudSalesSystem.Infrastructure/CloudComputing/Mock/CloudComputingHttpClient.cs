@@ -66,6 +66,30 @@ public class CloudComputingHttpClient
         return handlerMock.ToHttpClient();
     }
 
+    public HttpClient GetHttpClientMock(Guid serviceId, int amount)
+    {
+        var handlerMock = new MockHttpMessageHandler();
+        var service = GetAvailableServicesMockResponse().FirstOrDefault(service => service.Id == serviceId);
+
+        if (service is not null)
+        {
+            var responseItems = Enumerable.Range(0, amount)
+                .Select(_ => new ServiceItemLicenseKeyResponse(serviceId, $"{Guid.NewGuid()}"));
+
+            handlerMock.When($"https://api.cloudcomputingprovider/licenses/get?serviceId={serviceId}&amount={amount}")
+                .Respond(
+                    HttpStatusCode.OK,
+                    JsonContent.Create(responseItems));
+        }
+        else
+        {
+            handlerMock.When($"https://api.cloudcomputingprovider/licenses/get?serviceId={serviceId}&amount={amount}")
+                .Respond(HttpStatusCode.NotFound, JsonContent.Create(new { }));
+        }
+
+        return handlerMock.ToHttpClient();
+    }
+
     private static IReadOnlyCollection<AvailableServiceItem> GetAvailableServicesMockResponse() =>
         new List<AvailableServiceItem>
         {

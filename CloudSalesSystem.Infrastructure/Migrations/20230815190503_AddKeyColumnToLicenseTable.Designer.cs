@@ -3,6 +3,7 @@ using System;
 using CloudSalesSystem.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CloudSalesSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(CloudSalesSystemDbContext))]
-    partial class CloudSalesSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230815190503_AddKeyColumnToLicenseTable")]
+    partial class AddKeyColumnToLicenseTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,6 +123,7 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasColumnName("id");
 
                     b.Property<Guid?>("AccountId")
+                        .IsRequired()
                         .HasColumnType("uuid")
                         .HasColumnName("account_id");
 
@@ -269,6 +273,8 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                     b.HasOne("CloudSalesSystem.Domain.Accounts.Account", "Account")
                         .WithMany("Licenses")
                         .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_licenses_accounts_account_id");
 
                     b.HasOne("CloudSalesSystem.Domain.SubscriptionItems.SubscriptionItem", "SubscriptionItem")

@@ -8,8 +8,9 @@ internal sealed class LicenseConfiguration : IEntityTypeConfiguration<License>
 
         builder.HasKey(license => license.Id);
 
+        builder.Property(license => license.AccountId).IsRequired(false);
         builder.Property(license => license.SubscriptionItemId).IsRequired();
-        builder.Property(license => license.AccountId).IsRequired();
+        builder.Property(license => license.Key).HasMaxLength(255);
 
         builder.HasOne(license => license.SubscriptionItem)
             .WithMany(subscriptionItem => subscriptionItem.Licenses)

@@ -1,11 +1,13 @@
-﻿namespace CloudSalesSystem.Infrastructure.CloudComputing;
+﻿using CloudSalesSystem.Domain.Accounts;
+
+namespace CloudSalesSystem.Infrastructure.CloudComputing;
 
 public class CloudComputingService : ICloudComputingService
 {
     private readonly CloudComputingHttpClient _cloudComputingHttpClient;
     private readonly IMemoryCache _memoryCache;
 
-    private const string BaseUrl = "https://api.cloudcomputingprovider/services";
+    private const string BaseUrl = "https://api.cloudcomputingprovider";
 
     public CloudComputingService(
         CloudComputingHttpClient cloudComputingHttpClient,
@@ -25,7 +27,7 @@ public class CloudComputingService : ICloudComputingService
         }
 
         var response = await _cloudComputingHttpClient.GetHttpClientMock()
-            .GetAsync($"{BaseUrl}/get-all", cancellationToken);
+            .GetAsync($"{BaseUrl}/services/get-all", cancellationToken);
 
         var data = await response.Content
             .ReadFromJsonAsync<IReadOnlyCollection<AvailableServiceItem>>(cancellationToken: cancellationToken)
@@ -39,7 +41,7 @@ public class CloudComputingService : ICloudComputingService
     public async Task<AvailableServiceItem> GetServiceDetails(Guid serviceId, CancellationToken cancellationToken)
     {
         var response = await _cloudComputingHttpClient.GetHttpClientMock(serviceId)
-            .GetAsync($"{BaseUrl}/get?id={serviceId}", cancellationToken);
+            .GetAsync($"{BaseUrl}/services/get?id={serviceId}", cancellationToken);
 
         var data = await response.Content.ReadFromJsonAsync<AvailableServiceItem>(cancellationToken: cancellationToken)
                    ?? throw new Exception("Cloud Computing Service not found!");
@@ -50,7 +52,7 @@ public class CloudComputingService : ICloudComputingService
     public async Task<OrderServiceItemResponse> OrderComputingServiceItem(OrderServiceItemRequest request, CancellationToken cancellationToken)
     {
         var response = await _cloudComputingHttpClient.GetHttpClientMock(request.ServiceId, request.Amount, request.ValidToDate)
-            .GetAsync($"{BaseUrl}/order?id={request.ServiceId}&amount={request.Amount}", cancellationToken);
+            .GetAsync($"{BaseUrl}/services/order?id={request.ServiceId}&amount={request.Amount}", cancellationToken);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -58,6 +60,22 @@ public class CloudComputingService : ICloudComputingService
         }
 
         var data = await response.Content.ReadFromJsonAsync<OrderServiceItemResponse>(cancellationToken: cancellationToken);
+
+        return data!;
+    }
+
+    public async Task<IReadOnlyCollection<ServiceItemLicenseKeyResponse>> GetServiceItemLicenseKeys(ServiceItemLicenseKeyRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var response = await _cloudComputingHttpClient.GetHttpClientMock(request.ServiceId, request.Amount)
+            .GetAsync($"{BaseUrl}/licenses/get?serviceId={request.ServiceId}&amount={request.Amount}", cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception("OrderComputingServiceItem failed");
+        }
+
+        var data = await response.Content.ReadFromJsonAsync<IReadOnlyCollection<ServiceItemLicenseKeyResponse>>(cancellationToken: cancellationToken);
 
         return data!;
     }

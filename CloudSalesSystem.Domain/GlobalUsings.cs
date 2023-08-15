@@ -8,6 +8,7 @@ global using CloudSalesSystem.Domain.Customers.Events;
 global using CloudSalesSystem.Domain.CustomerSubscriptions;
 global using CloudSalesSystem.Domain.Licenses;
 global using CloudSalesSystem.Domain.Licenses.Events;
+global using CloudSalesSystem.Domain.Repositories;
 global using CloudSalesSystem.Domain.Shared;
 global using CloudSalesSystem.Domain.SubscriptionItems;
 global using CloudSalesSystem.Domain.SubscriptionItems.Events;

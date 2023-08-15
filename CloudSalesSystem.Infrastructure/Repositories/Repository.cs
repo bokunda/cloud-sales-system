@@ -14,7 +14,7 @@ public class Repository<TEntity, TEntityId> : IRepository<TEntity, TEntityId> wh
             .Set<TEntity>()
             .ToListAsync(cancellationToken);
 
-    public async Task<TEntity?> GetByIdAsync(TEntity id, CancellationToken cancellationToken = default) =>
+    public async Task<TEntity?> GetByIdAsync(TEntityId id, CancellationToken cancellationToken = default) =>
         await DbContext
             .Set<TEntity>()
             .FirstOrDefaultAsync(entity => entity.Id!.Equals(id), cancellationToken);
