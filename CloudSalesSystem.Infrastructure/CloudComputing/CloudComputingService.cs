@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Domain.Accounts;
-
-namespace CloudSalesSystem.Infrastructure.CloudComputing;
+﻿namespace CloudSalesSystem.Infrastructure.CloudComputing;
 
 public class CloudComputingService : ICloudComputingService
 {

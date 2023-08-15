@@ -32,4 +32,10 @@ public sealed class License : Entity<Guid>
         AccountId = accountId;
         RaiseDomainEvent(new AssignAccountToLicenseDomainEvent(Id, accountId));
     }
+
+    public void RemoveAccount()
+    {
+        AccountId = null;
+        RaiseDomainEvent(new RemoveAccountFromLicenseEvent(Id));
+    }
 }
