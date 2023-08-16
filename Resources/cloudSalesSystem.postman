@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "4e2d1c78-d895-49a6-a786-d2a754219dee",
+		"name": "CloudSalesSystem.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4044595"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get All Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/Accounts?PageNumber=1&PageSize=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"Accounts"
+							],
+							"query": [
+								{
+									"key": "PageNumber",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CloudServices",
+			"item": [
+				{
+					"name": "Get Available Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/CloudServices",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"CloudServices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Service License",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subscriptionId\": \"74E083D4-13AE-4AFC-8040-62D226357C56\",\r\n  \"serviceId\": \"e913c473-25a3-49aa-a80e-d62da922ca5e\",\r\n  \"amount\": 1,\r\n  \"validToDate\": \"2024-11-16\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/CloudServices/order-service-license",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"CloudServices",
+								"order-service-license"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Licenses",
+			"item": [
+				{
+					"name": "Assign License",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"E0000B5B-7AD0-4B27-8457-47262FDCF1C7\",\r\n  \"subscriptionItemId\": \"74E083D4-13AE-4AFC-8040-62D226357C56\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/Licenses/assign-license",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"Licenses",
+								"assign-license"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revoke Service License",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"licenseId\": \"426A397F-4D49-4D8C-B775-2EF6DF1D9B61\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/Licenses/revoke-service-license",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"Licenses",
+								"revoke-service-license"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubscriptionItems",
+			"item": [
+				{
+					"name": "Get Subscription Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/SubscriptionItems?AccountId=E0000B5B-7AD0-4B27-8457-47262FDCF1C7&PageNumber=1&PageSize=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"SubscriptionItems"
+							],
+							"query": [
+								{
+									"key": "SubscriptionId",
+									"value": "74E083D4-13AE-4AFC-8040-62D226357C56",
+									"disabled": true
+								},
+								{
+									"key": "AccountId",
+									"value": "E0000B5B-7AD0-4B27-8457-47262FDCF1C7"
+								},
+								{
+									"key": "PageNumber",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Subscription Item Quantity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subscriptionItemId\": \"74E083D4-13AE-4AFC-8040-62D226357C56\",\r\n  \"quantity\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/SubscriptionItems/update-quantity",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"SubscriptionItems",
+								"update-quantity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Validity of Subscription Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subscriptionItemId\": \"74E083D4-13AE-4AFC-8040-62D226357C56\",\r\n  \"validToDate\": \"2023-08-16\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/SubscriptionItems/update-valid-to",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"SubscriptionItems",
+								"update-valid-to"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://localhost:62247"
+		}
+	]
+}

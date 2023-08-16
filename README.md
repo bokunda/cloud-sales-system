@@ -133,7 +133,9 @@ Seeded identifiers
 You can open a Swagger and using the given Guid's you can test the application.
 
 #### Postman
-TODO: 
+Just set {{ host }} environment variable in Postman and you can start testing the app.
+
+**NOTE:** Initial setup of the collecion is with a valid data!
 
 ## Future Improvements
 - Create dedicated libraries for services that can be reused on other projects and publish them on nuget repository.
