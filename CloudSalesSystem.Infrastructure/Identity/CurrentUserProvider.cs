@@ -2,5 +2,5 @@
 
 public class CurrentUserProvider : ICurrentUserProvider
 {
-    public Guid CustomerId { get; } = Guid.NewGuid();
+    public Guid CustomerId { get; } = Customer.SystemCustomerId;
 }
