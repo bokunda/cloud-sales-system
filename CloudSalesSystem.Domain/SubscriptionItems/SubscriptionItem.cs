@@ -2,6 +2,10 @@
 
 public sealed class SubscriptionItem : Entity<Guid>
 {
+    public static Guid FirstSubscriptionItemId = new("74E083D4-13AE-4AFC-8040-62D226357C56");
+    public static Guid SecondSubscriptionItemId = new("75E083D4-13AE-4AFC-8040-62D226357C56");
+    public static Guid ThirdSubscriptionItemId = new("76E083D4-13AE-4AFC-8040-62D226357C56");
+
     private SubscriptionItem(
         Guid id,
         Guid subscriptionId,

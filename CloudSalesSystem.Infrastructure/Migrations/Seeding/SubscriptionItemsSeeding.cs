@@ -10,7 +10,7 @@ internal class SubscriptionItemsSeeding : ISeeding
             "Service_1",
             7,
             DateOnly.Parse("2025-01-01"));
-        firstSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), Subscription.FirstSubscriptionId);
+        firstSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), SubscriptionItem.FirstSubscriptionItemId);
 
         var secondSubscriptionItem = SubscriptionItem.Create(
             Subscription.FirstSubscriptionId,
@@ -18,7 +18,7 @@ internal class SubscriptionItemsSeeding : ISeeding
             "Service_2",
             26,
             DateOnly.Parse("2025-09-01"));
-        secondSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), Subscription.SecondSubscriptionId);
+        secondSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), SubscriptionItem.SecondSubscriptionItemId);
 
         var thirdSubscriptionItem = SubscriptionItem.Create(
             Subscription.FirstSubscriptionId,
@@ -26,7 +26,7 @@ internal class SubscriptionItemsSeeding : ISeeding
             "Service_3",
             19,
             DateOnly.Parse("2025-05-01"));
-        thirdSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), Subscription.ThirdSubscriptionId);
+        thirdSubscriptionItem.SetProperty(nameof(SubscriptionItem.Id), SubscriptionItem.ThirdSubscriptionItemId);
 
         modelBuilder.Entity<SubscriptionItem>()
             .HasData(new List<SubscriptionItem>
