@@ -4,11 +4,15 @@ internal static class SequentialGuidGenerator
 {
     public static Guid Generate()
     {
-        long ticks = DateTime.UtcNow.Ticks;
-        byte[] byteArray = Guid.NewGuid().ToByteArray();
-        byte[] bytes = BitConverter.GetBytes(Interlocked.Increment(ref ticks));
+        var ticks = DateTime.UtcNow.Ticks;
+        var byteArray = Guid.NewGuid().ToByteArray();
+        var bytes = BitConverter.GetBytes(Interlocked.Increment(ref ticks));
+
         if (!BitConverter.IsLittleEndian)
-            Array.Reverse<byte>(bytes);
+        {
+            Array.Reverse(bytes);
+        }
+
         byteArray[8] = bytes[1];
         byteArray[9] = bytes[0];
         byteArray[10] = bytes[7];
