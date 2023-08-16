@@ -133,9 +133,14 @@ Seeded identifiers
 You can open a Swagger and using the given Guid's you can test the application.
 
 #### Postman
+
+[Download Link](https://github.com/bokunda/cloud-sales-system/blob/main/Resources/cloudSalesSystem.postman) - Postman Collection
 Just set {{ host }} environment variable in Postman and you can start testing the app.
 
-**NOTE:** Initial setup of the collecion is with a valid data!
+If download fails, navigate to **Resources** folder and download **cloudSalesSystem.postman** file.
+
+**NOTE:** Initial setup of the collection is with valid data!
+
 
 ## Future Improvements
 - Create dedicated libraries for services that can be reused on other projects and publish them on nuget repository.
