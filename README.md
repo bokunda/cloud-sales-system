@@ -93,7 +93,7 @@ There are two ways to start the solution, directly from *Visual Studio* or using
 #### Docker Compose
 - Navigate to the root of the *cloud-sales-system* folder
 - Open console
-- run `docker compose up` command
+- run `docker-compose -f docker-compose.yml -f docker-compose.override.yml up` command
 
 ### Test
 
