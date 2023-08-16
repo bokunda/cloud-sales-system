@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\CloudSalesSystem.Domain\CloudSalesSystem.Domain.csproj" />
+	  <ProjectReference Include="..\..\src\CloudSalesSystem.Domain\CloudSalesSystem.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -24,9 +24,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\CloudSalesSystem.Application\CloudSalesSystem.Application.csproj" />
-	  <ProjectReference Include="..\..\CloudSalesSystem.Domain\CloudSalesSystem.Domain.csproj" />
-	  <ProjectReference Include="..\..\CloudSalesSystem.Infrastructure\CloudSalesSystem.Infrastructure.csproj" />
+	  <ProjectReference Include="..\..\src\CloudSalesSystem.Application\CloudSalesSystem.Application.csproj" />
+	  <ProjectReference Include="..\..\src\CloudSalesSystem.Domain\CloudSalesSystem.Domain.csproj" />
+	  <ProjectReference Include="..\..\src\CloudSalesSystem.Infrastructure\CloudSalesSystem.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
