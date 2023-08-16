@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace CloudSalesSystem.Application.Behaviors;
+﻿namespace CloudSalesSystem.Application.Behaviors;
 
 public class LoggingBehavior<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : IRequest<TRequest>
+    : IPipelineBehavior<TRequest, TResponse> 
+    where TRequest : notnull
 {
     private readonly ILogger<TRequest> _logger;
 
@@ -22,17 +20,17 @@ public class LoggingBehavior<TRequest, TResponse>
 
         try
         {
-            _logger.LogInformation("Executing command {Command}", name);
+            _logger.LogInformation("Executing {IRequest}", name);
 
             var result = await next();
 
-            _logger.LogInformation("Command {Command} processed successfully", name);
+            _logger.LogInformation("{IRequest} processed successfully", name);
 
             return result;
         }
         catch (Exception exception)
         {
-            _logger.LogError(exception, "Command {Command} processing failed", name);
+            _logger.LogError(exception, "{IRequest} processing failed", name);
 
             throw;
         }
