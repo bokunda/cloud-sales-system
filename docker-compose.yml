@@ -18,3 +18,12 @@ services:
       - ./.containers/database:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  seq:
+    image: datalust/seq:latest
+    ports:
+      - "5341:80"
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./.containers/seq:/data

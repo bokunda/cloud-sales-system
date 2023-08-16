@@ -1,3 +1,5 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -6,26 +8,47 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMemoryCache();
-
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-var app = builder.Build();
+builder.Host.UseSerilog();
 
-if (app.Environment.IsDevelopment())
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information("Application Starting Up!");
 
-    app.ApplyMigrations();
+    var app = builder
+        .Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
+        app.ApplyMigrations();
+    }
+
+    app.UseHttpsRedirection();
+
+    app.UseCustomExceptionHandler();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
+}
+catch (Exception exception)
+{
+    Log.Fatal(exception, "The application failed to start correctly!");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
 }
 
-app.UseHttpsRedirection();
-
-app.UseCustomExceptionHandler();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
