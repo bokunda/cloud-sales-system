@@ -42,7 +42,7 @@ services) for specific account
 
 ## Application Access Data
 ### [Seq](http://localhost:5341/) - Logs monitoring
-### [Swagger API](https://localhost:62247/swagger/index.html) - Swagger representation
+### [Swagger API](https://localhost:6992/swagger/index.html) - Swagger representation
 ### PostgreSQL  
 - host: **localhost** 
 - port: **5432** 
@@ -135,7 +135,7 @@ You can open a Swagger and using the given Guid's you can test the application.
 #### Postman
 
 [Download Link](https://github.com/bokunda/cloud-sales-system/blob/main/Resources/cloudSalesSystem.postman) - Postman Collection
-Just set {{ host }} environment variable in Postman and you can start testing the app.
+Just set {{ host }} environment variable in Postman to `https://localhost:6992` and you can start testing the app.
 
 If download fails, navigate to **Resources** folder and download **cloudSalesSystem.postman** file.
 
