@@ -18,6 +18,9 @@ public sealed class CloudSalesSystemDbContext : DbContext, IUnitOfWork
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CloudSalesSystemDbContext).Assembly);
 
+        // Seed the data
+        DbInitializer.SeedData(modelBuilder);
+
         base.OnModelCreating(modelBuilder);
     }
 
@@ -32,7 +35,7 @@ public sealed class CloudSalesSystemDbContext : DbContext, IUnitOfWork
             // Re-think, should publish domain events or save changes first? 
             // Because we can get exceptions in both ways.
             // Outbox pattern is a better approach
-            //await PublishDomainEventAsync();
+            // await PublishDomainEventAsync();
 
             return result;
         }

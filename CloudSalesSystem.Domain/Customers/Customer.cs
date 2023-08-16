@@ -2,6 +2,8 @@
 
 public sealed class Customer : Entity<Guid>
 {
+    public static Guid SystemCustomerId = new ("697EEFC8-CB19-41B0-8302-E91FCA1805BF");
+
     private Customer(
         Guid id,
         string name,

@@ -2,6 +2,10 @@
 
 public sealed class Account : Entity<Guid>
 {
+    public static Guid FirstSystemAccountId = new("E0000B5B-7AD0-4B27-8457-47262FDCF1C7");
+    public static Guid SecondSystemAccountId = new("E1000B5B-7AD0-4B27-8457-47262FDCF1C7");
+    public static Guid ThirdSystemAccountId = new("E2000B5B-7AD0-4B27-8457-47262FDCF1C7");
+
     private Account(
         Guid id,
         string name,

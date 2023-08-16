@@ -63,6 +63,38 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasDatabaseName("ix_accounts_customer_id");
 
                     b.ToTable("accounts", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e0000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CustomerId = new Guid("697eefc8-cb19-41b0-8302-e91fca1805bf"),
+                            Description = "Account_Description_1",
+                            IsDeleted = false,
+                            Name = "Account_Name_1",
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            Id = new Guid("e1000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CustomerId = new Guid("697eefc8-cb19-41b0-8302-e91fca1805bf"),
+                            Description = "Account_Description_2",
+                            IsDeleted = false,
+                            Name = "Account_Name_2",
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            Id = new Guid("e2000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CustomerId = new Guid("697eefc8-cb19-41b0-8302-e91fca1805bf"),
+                            Description = "Account_Description_3",
+                            IsDeleted = false,
+                            Name = "Account_Name_3",
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.CustomerSubscriptions.CustomerSubscription", b =>
@@ -82,6 +114,13 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasDatabaseName("ix_customer_subscriptions_subscription_id");
 
                     b.ToTable("customer_subscriptions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = new Guid("697eefc8-cb19-41b0-8302-e91fca1805bf"),
+                            SubscriptionId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56")
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.Customers.Customer", b =>
@@ -118,6 +157,17 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasName("pk_customers");
 
                     b.ToTable("customers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("697eefc8-cb19-41b0-8302-e91fca1805bf"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Customer_Description_1",
+                            IsDeleted = false,
+                            Name = "Customer_Name_1",
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.Licenses.License", b =>
@@ -162,6 +212,38 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasDatabaseName("ix_licenses_subscription_item_id");
 
                     b.ToTable("licenses", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("446a397f-4d49-4d8c-b775-2ef6df1d9b61"),
+                            AccountId = new Guid("e0000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            Key = "D3694155-870D-41BF-BD38-01742D5CDD53",
+                            SubscriptionItemId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            Id = new Guid("f7c7f5dc-47b6-40b7-c760-08db9e382468"),
+                            AccountId = new Guid("e0000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            Key = "D4694155-870D-41BF-BD38-01742D5CDD53",
+                            SubscriptionItemId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            Id = new Guid("43a13dd2-b95d-48ea-c763-08db9e382468"),
+                            AccountId = new Guid("e1000b5b-7ad0-4b27-8457-47262fdcf1c7"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            Key = "D5694155-870D-41BF-BD38-01742D5CDD53",
+                            SubscriptionItemId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.SubscriptionItems.SubscriptionItem", b =>
@@ -215,6 +297,47 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasDatabaseName("ix_subscription_items_subscription_id");
 
                     b.ToTable("subscription_items", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            ProductId = new Guid("e913c473-25a3-49aa-a80e-d62da922ca5e"),
+                            ProductName = "Service_1",
+                            Quantity = 7,
+                            State = 1,
+                            SubscriptionId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            ValidToDate = new DateOnly(2025, 1, 1)
+                        },
+                        new
+                        {
+                            Id = new Guid("75e083d4-13ae-4afc-8040-62d226357c56"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            ProductId = new Guid("ea13c473-25a3-49aa-a80e-d62da922ca5e"),
+                            ProductName = "Service_2",
+                            Quantity = 26,
+                            State = 1,
+                            SubscriptionId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            ValidToDate = new DateOnly(2025, 9, 1)
+                        },
+                        new
+                        {
+                            Id = new Guid("76e083d4-13ae-4afc-8040-62d226357c56"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsDeleted = false,
+                            ProductId = new Guid("eb13c473-25a3-49aa-a80e-d62da922ca5e"),
+                            ProductName = "Service_3",
+                            Quantity = 19,
+                            State = 1,
+                            SubscriptionId = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            ValidToDate = new DateOnly(2025, 5, 1)
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.Subscriptions.Subscription", b =>
@@ -249,6 +372,17 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         .HasName("pk_subscriptions");
 
                     b.ToTable("subscriptions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("74e083d4-13ae-4afc-8040-62d226357c56"),
+                            CreatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Subscription_Description_1",
+                            IsDeleted = false,
+                            Name = "Subscription_Name_1",
+                            UpdatedOn = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("CloudSalesSystem.Domain.Accounts.Account", b =>

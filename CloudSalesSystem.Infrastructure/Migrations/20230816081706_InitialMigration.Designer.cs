@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CloudSalesSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(CloudSalesSystemDbContext))]
-    [Migration("20230815224527_UpdateValidToDateType")]
-    partial class UpdateValidToDateType
+    [Migration("20230816081706_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

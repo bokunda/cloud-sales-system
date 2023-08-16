@@ -2,6 +2,10 @@
 
 public sealed class License : Entity<Guid>
 {
+    public static Guid FirstSystemLicenseId = new("426A397F-4D49-4D8C-B775-2EF6DF1D9B61");
+    public static Guid SecondSystemLicenseId = new("436A397F-4D49-4D8C-B775-2EF6DF1D9B61");
+    public static Guid ThirdSystemLicenseId = new("446A397F-4D49-4D8C-B775-2EF6DF1D9B61");
+
     private License(
         Guid id,
         Guid? accountId,

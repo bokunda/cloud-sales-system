@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CloudSalesSystem.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,27 +19,12 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                     name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     description = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_customers", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "products",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    description = table.Column<string>(type: "text", nullable: true),
-                    provider = table.Column<string>(type: "text", nullable: false),
-                    created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_products", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +35,8 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                     name = table.Column<string>(type: "text", nullable: false),
                     description = table.Column<string>(type: "text", nullable: true),
                     created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +52,8 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                     description = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     customer_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,22 +96,18 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     product_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    product_name = table.Column<string>(type: "text", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
                     state = table.Column<int>(type: "integer", nullable: false),
-                    valid_to_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    valid_to_date = table.Column<DateOnly>(type: "date", nullable: false),
                     subscription_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_subscription_items", x => x.id);
-                    table.ForeignKey(
-                        name: "fk_subscription_items_products_product_id",
-                        column: x => x.product_id,
-                        principalTable: "products",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_subscription_items_subscriptions_subscription_id",
                         column: x => x.subscription_id,
@@ -138,10 +121,12 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    account_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    account_id = table.Column<Guid>(type: "uuid", nullable: true),
                     subscription_item_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    key = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     created_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    updated_on = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,8 +135,7 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                         name: "fk_licenses_accounts_account_id",
                         column: x => x.account_id,
                         principalTable: "accounts",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "fk_licenses_subscription_item_subscription_item_id",
                         column: x => x.subscription_item_id,
@@ -181,11 +165,6 @@ namespace CloudSalesSystem.Infrastructure.Migrations
                 column: "subscription_item_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_subscription_items_product_id",
-                table: "subscription_items",
-                column: "product_id");
-
-            migrationBuilder.CreateIndex(
                 name: "ix_subscription_items_subscription_id",
                 table: "subscription_items",
                 column: "subscription_id");
@@ -208,9 +187,6 @@ namespace CloudSalesSystem.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "customers");
-
-            migrationBuilder.DropTable(
-                name: "products");
 
             migrationBuilder.DropTable(
                 name: "subscriptions");

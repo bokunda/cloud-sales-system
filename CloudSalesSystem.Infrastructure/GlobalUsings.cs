@@ -23,6 +23,8 @@ global using CloudSalesSystem.Infrastructure.CloudComputing;
 global using CloudSalesSystem.Infrastructure.CloudComputing.Mock;
 global using CloudSalesSystem.Infrastructure.Data;
 global using CloudSalesSystem.Infrastructure.Identity;
+global using CloudSalesSystem.Infrastructure.Migrations;
+global using CloudSalesSystem.Infrastructure.Migrations.Seeding;
 global using CloudSalesSystem.Infrastructure.Repositories;
 global using Dapper;
 global using MediatR;

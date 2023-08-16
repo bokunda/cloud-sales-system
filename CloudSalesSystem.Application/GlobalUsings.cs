@@ -15,6 +15,7 @@ global using CloudSalesSystem.Application.Licenses.RevokeLicense;
 global using CloudSalesSystem.Application.Paging;
 global using CloudSalesSystem.Application.SubscriptionItems.UpdateQuantity;
 global using CloudSalesSystem.Domain.Abstractions;
+global using CloudSalesSystem.Domain.Identity;
 global using CloudSalesSystem.Domain.Licenses;
 global using CloudSalesSystem.Domain.Repositories;
 global using CloudSalesSystem.Domain.SubscriptionItems;

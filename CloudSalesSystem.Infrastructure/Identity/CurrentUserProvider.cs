@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Domain.Identity;
-
-namespace CloudSalesSystem.Infrastructure.Identity;
+﻿namespace CloudSalesSystem.Infrastructure.Identity;
 
 public class CurrentUserProvider : ICurrentUserProvider
 {

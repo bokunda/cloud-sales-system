@@ -1,6 +1,4 @@
-﻿using CloudSalesSystem.Domain.Identity;
-
-namespace CloudSalesSystem.Application.Accounts.GetAccounts;
+﻿namespace CloudSalesSystem.Application.Accounts.GetAccounts;
 
 internal sealed class GetAccountsQueryHandler : IPagedRequestHandler<GetAccountsQuery, AccountResponse>
 {
