@@ -53,6 +53,12 @@ public class ExceptionHandlingMiddleware
                 "Validation error",
                 "One or more validation errors has occurred",
                 validationException.Errors),
+            InvalidOperationException invalidOperationException => new ExceptionDetails(
+                StatusCodes.Status400BadRequest,
+                nameof(InvalidOperationException),
+                exception.Message,
+                string.Empty, 
+                null),
             _ => new ExceptionDetails(
                 StatusCodes.Status500InternalServerError,
                 "ServerError",
