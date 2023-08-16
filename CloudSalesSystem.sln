@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSalesSystem.Domain.Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSalesSystem.Architecture.Tests", "..\CloudSalesSystem.Architecture.Tests\CloudSalesSystem.Architecture.Tests.csproj", "{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSalesSystem.Application.UnitTests", "..\CloudSalesSystem.Application.UnitTests\CloudSalesSystem.Application.UnitTests.csproj", "{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{48BFE13B-27BA-431F-BA6E-BFDC2D633ABB} = {C3672BE8-FA33-40F5-ACF9-DA5CA1B8C7C4}
 		{D72BC42C-CC76-40EF-9B70-E8C02D4E605C} = {E198BDAA-7800-418B-B45A-B232F0345F83}
 		{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A} = {E198BDAA-7800-418B-B45A-B232F0345F83}
+		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3} = {E198BDAA-7800-418B-B45A-B232F0345F83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86AE6888-9D89-4CB7-918F-72F30024A42E}

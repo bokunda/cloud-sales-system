@@ -1,6 +1,6 @@
 ﻿namespace CloudSalesSystem.Application.Licenses.RevokeLicense;
 
-internal sealed class RevokeServiceLicenseCommandHandler : IRequestHandler<RevokeServiceLicenseCommand, RevokeServiceLicenseResponse>
+public sealed class RevokeServiceLicenseCommandHandler : IRequestHandler<RevokeServiceLicenseCommand, RevokeServiceLicenseResponse>
 {
     private readonly ILicenseRepository _licenseRepository;
     private readonly IUnitOfWork _unitOfWork;
