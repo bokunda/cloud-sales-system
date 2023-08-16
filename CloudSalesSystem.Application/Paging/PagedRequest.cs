@@ -4,6 +4,4 @@ public record PagedRequest<TResponse> : IRequest<PagedResponse<TResponse>>, IPag
 {
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
-    public string SortBy { get; set; } = string.Empty;
-    public string SortDirection { get; set; } = string.Empty;
 }

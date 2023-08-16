@@ -3,10 +3,14 @@
 internal sealed class GetSubscriptionItemsQueryHandler :
     IPagedRequestHandler<GetSubscriptionItemsQuery, GetSubscriptionItemsResponse>
 {
+    private readonly ICurrentUserProvider _currentUserProvider;
     private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-    public GetSubscriptionItemsQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
+    public GetSubscriptionItemsQueryHandler(
+        ICurrentUserProvider currentUserProvider,
+        ISqlConnectionFactory sqlConnectionFactory)
     {
+        _currentUserProvider = currentUserProvider;
         _sqlConnectionFactory = sqlConnectionFactory;
     }
 
@@ -16,21 +20,21 @@ internal sealed class GetSubscriptionItemsQueryHandler :
 
         var totalCount = await connection
             .ExecuteScalarAsync<long>(
-                GetSubscriptionItemsCountQuery(request.SubscriptionId, request.CustomerId, request.AccountId),
+                GetSubscriptionItemsCountQuery(request.SubscriptionId, _currentUserProvider.CustomerId, request.AccountId),
                 new
                 {
                     request.SubscriptionId,
-                    request.CustomerId,
+                    _currentUserProvider.CustomerId,
                     request.AccountId,
                 });
 
         var accounts = await connection
             .QueryAsync<GetSubscriptionItemsResponse>(
-                GetSubscriptionItemsQuery(request.SubscriptionId, request.CustomerId, request.AccountId),
+                GetSubscriptionItemsQuery(request.SubscriptionId, _currentUserProvider.CustomerId, request.AccountId),
                 new
                 {
                     request.SubscriptionId,
-                    request.CustomerId,
+                    _currentUserProvider.CustomerId,
                     request.AccountId,
                     request.PageSize,
                     Offset = (request.PageNumber - 1) * request.PageSize
@@ -50,17 +54,13 @@ internal sealed class GetSubscriptionItemsQueryHandler :
         SELECT
             COUNT(*)
         FROM subscription_items AS si
-        WHERE 
-                {(subscriptionId.HasValue ? "si.subscription_id = @SubscriptionId AND" : string.Empty)}
-                {(customerId.HasValue ? "si.customer_id = @CustomerId AND" : string.Empty)}
-                {(accountId.HasValue ? "si.account_id = @AccountId AND" : string.Empty)}
-                {(subscriptionId.HasValue || customerId.HasValue || accountId.HasValue ? "1 = 1" : string.Empty)}
+        {GetJoinedTables()}
+        {GetWhereClause(subscriptionId, customerId, accountId)}
         """;
 
-    // TODO: Join with accounts!
     private static string GetSubscriptionItemsQuery(Guid? subscriptionId, Guid? customerId, Guid? accountId) =>
         $"""
-        SELECT
+        SELECT DISTINCT
             si.id AS Id,
             si.subscription_id AS SubscriptionId,
             si.product_id AS ProductId,
@@ -68,13 +68,28 @@ internal sealed class GetSubscriptionItemsQueryHandler :
             si.state AS State,
             si.valid_to_date AS ValidToDate
         FROM subscription_items AS si
-        WHERE
-                {(subscriptionId.HasValue ? "si.subscription_id = @SubscriptionId AND" : string.Empty)}
-                {(customerId.HasValue ? "si.customer_id = @CustomerId AND" : string.Empty)}
-                {(accountId.HasValue ? "si.account_id = @AccountId AND" : string.Empty)}
-                {(subscriptionId.HasValue || customerId.HasValue || accountId.HasValue ? "1 = 1" : string.Empty)}
+        {GetJoinedTables()}
+        {GetWhereClause(subscriptionId, customerId, accountId)}
         ORDER BY si.id
         OFFSET @Offset ROWS
         FETCH NEXT @PageSize ROWS ONLY
         """;
+
+    private static string GetJoinedTables() =>
+        """
+        LEFT JOIN subscriptions s ON si.subscription_id = s.id
+        LEFT JOIN customer_subscriptions cs ON s.id = cs.subscription_id 
+        LEFT JOIN customers c ON cs.customer_id = c.id
+        LEFT JOIN accounts a ON c.id = a.customer_id
+        LEFT JOIN licenses l ON l.account_id = a.id
+        """;
+
+    private static string GetWhereClause(Guid? subscriptionId, Guid? customerId, Guid? accountId) =>
+        $"""
+        WHERE
+            { (subscriptionId.HasValue ? "si.subscription_id = @SubscriptionId AND" : string.Empty)} 
+            { (customerId.HasValue ? "cs.customer_id = @CustomerId AND" : string.Empty)} 
+            { (accountId.HasValue ? "l.account_id = @AccountId AND" : string.Empty)} 
+            { (subscriptionId.HasValue || customerId.HasValue || accountId.HasValue ? "1 = 1" : string.Empty)} 
+        """ ;
 }
