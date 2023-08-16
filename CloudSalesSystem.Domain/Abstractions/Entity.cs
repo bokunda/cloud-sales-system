@@ -9,7 +9,9 @@ public abstract class Entity<TEntityId> : IEntity, IEntityHasCreatedUpdated
         Id = id;
     }
 
+#pragma warning disable CS8618
     protected Entity() { }
+#pragma warning restore CS8618
 
     public TEntityId Id { get; init; }
     public DateTimeOffset CreatedOn { get; private set; }
