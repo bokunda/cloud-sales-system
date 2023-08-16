@@ -32,8 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{44043CCA-B127-4B48-ADE4-163C36867F4B}"
 	ProjectSection(SolutionItems) = preProject
-		Resources\CludSalesSystemDb.png = Resources\CludSalesSystemDb.png
 		Resources\dbdiagram.dbml = Resources\dbdiagram.dbml
+		Resources\CloudSalesSystemDb.png = Resources\CloudSalesSystemDb.png
 	EndProjectSection
 EndProject
 Global
