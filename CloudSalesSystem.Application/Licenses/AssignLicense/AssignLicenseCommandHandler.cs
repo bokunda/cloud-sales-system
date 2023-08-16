@@ -42,7 +42,7 @@ internal sealed class AssignLicenseCommandHandler : IRequestHandler<AssignLicens
 
             if (assignedLicensesCount >= subscriptionItemDetails!.Quantity)
             {
-                throw new Exception("Maximum amount of issued licenses is reached!");
+                throw new InvalidOperationException("Maximum amount of issued licenses is reached!");
             }
 
             // Get new license key

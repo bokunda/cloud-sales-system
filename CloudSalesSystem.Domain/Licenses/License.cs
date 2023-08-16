@@ -27,7 +27,7 @@ public sealed class License : Entity<Guid>
     public static License Create(Guid? accountId, Guid subscriptionItemId, string? key)
     {
         var license = new License(SequentialGuidGenerator.Generate(), accountId, subscriptionItemId, key);
-        license.RaiseDomainEvent(new CreateLicenseDomainEvent(license.Id));
+        license.RaiseDomainEvent(new CreateLicenseDomainDomainEvent(license.Id));
         return license;
     }
 
@@ -40,6 +40,6 @@ public sealed class License : Entity<Guid>
     public void RemoveAccount()
     {
         AccountId = null;
-        RaiseDomainEvent(new RemoveAccountFromLicenseEvent(Id));
+        RaiseDomainEvent(new RemoveAccountFromLicenseDomainEvent(Id));
     }
 }
