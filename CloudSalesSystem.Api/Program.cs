@@ -1,8 +1,3 @@
-using CloudSalesSystem.Api.Health;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

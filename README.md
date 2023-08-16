@@ -148,3 +148,4 @@ If download fails, navigate to **Resources** folder and download **cloudSalesSys
 - All tests should be covered.
 - Use Polly for API calls
 - Restrict healtcheck visibility
+- Revisit data transfer objects
