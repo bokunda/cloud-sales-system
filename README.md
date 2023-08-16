@@ -134,7 +134,7 @@ You can open a Swagger and using the given Guid's you can test the application.
 
 #### Postman
 
-[Download Link](/Resources/CloudSalesSystem.postman) - Postman Collection
+[Download Link](https://github.com/bokunda/cloud-sales-system/blob/main/Resources/cloudSalesSystem.postman) - Postman Collection
 Just set {{ host }} environment variable in Postman and you can start testing the app.
 
 **NOTE:** Initial setup of the collecion is with a valid data!
