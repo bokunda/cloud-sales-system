@@ -136,6 +136,6 @@ You can open a Swagger and using the given Guid's you can test the application.
 TODO: 
 
 ## Future Improvements
-- Error handling can be improved.
+- Create dedicated libraries for services that can be reused on other projects and publish them on nuget repository.
+- Error handling should be improved.
 - All tests should be covered.
-- 
