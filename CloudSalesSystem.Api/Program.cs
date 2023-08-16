@@ -1,5 +1,7 @@
-using Serilog;
-using System.Reflection;
+using CloudSalesSystem.Api.Health;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,10 @@ builder.Services.AddSwaggerGen(c =>
 
     // Other SwaggerGen configuration if needed...
 });
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration["ConnectionStrings:Database"]!)
+    .AddCheck<CloudServiceHealthCheck>("CloudServiceProvider");
 
 builder.Services.AddMemoryCache();
 builder.Services.AddApplication();
@@ -42,6 +48,12 @@ try
     app.ApplyMigrations();
 
     app.UseHttpsRedirection();
+
+    // Future improvements, this shouldn't be visible to everyone
+    app.MapHealthChecks("/_health", new HealthCheckOptions
+    {
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
 
     app.UseCustomExceptionHandler();
 

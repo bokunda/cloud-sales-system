@@ -248,6 +248,23 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/_health",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"_health"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [

@@ -146,3 +146,5 @@ If download fails, navigate to **Resources** folder and download **cloudSalesSys
 - Create dedicated libraries for services that can be reused on other projects and publish them on nuget repository.
 - Error handling should be improved.
 - All tests should be covered.
+- Use Polly for API calls
+- Restrict healtcheck visibility
