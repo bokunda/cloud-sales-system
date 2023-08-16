@@ -86,7 +86,7 @@ There are two ways to start the solution, directly from *Visual Studio* or using
 
 #### Visual Studio 2022 (or newer)
 - Open this solution using Visual Studio 2022 or newer
-- Right-click on the *docker-compose* item in Solution Explorer (follow the blue whale icon 😄)
+- Right-click on the *docker-compose* item in Solution Explorer (follow the blue whale icon 🐋)
 - Chose 'Set as Startup project'
 - Run the solution (click on the green play button on the top of the Visual Studio window)
 
