@@ -11,6 +11,12 @@ public class LicensesController : ControllerBase
         _sender = sender;
     }
 
+    /// <summary>
+    /// Tries to assign license to an account
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost("assign-license")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -22,6 +28,12 @@ public class LicensesController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Tries to revoke assigned license from account
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost("revoke-service-license")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

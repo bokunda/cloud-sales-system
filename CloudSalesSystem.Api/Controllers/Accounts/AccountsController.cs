@@ -11,6 +11,12 @@ public class AccountsController : ControllerBase
         _sender = sender;
     }
 
+    /// <summary>
+    /// Returns all the accounts for the logged customer
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAccounts([FromQuery] GetAccountsQuery request, CancellationToken cancellationToken)

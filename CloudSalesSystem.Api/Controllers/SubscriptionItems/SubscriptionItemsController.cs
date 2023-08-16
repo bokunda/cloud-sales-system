@@ -15,6 +15,12 @@ public class SubscriptionItemsController : ControllerBase
         _sender = sender;
     }
 
+    /// <summary>
+    /// Returns subscription items for the given customer and params
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get([FromQuery] GetSubscriptionItemsQuery query, CancellationToken cancellationToken)
@@ -23,6 +29,12 @@ public class SubscriptionItemsController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Try to update quantity for subscription items using Cloud Computing Provider
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost("update-quantity")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -34,6 +46,12 @@ public class SubscriptionItemsController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Extends license validity using Cloud Computing Provider
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost("update-valid-to")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
