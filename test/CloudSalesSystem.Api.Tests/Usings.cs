@@ -1,0 +1,15 @@
+global using CloudSalesSystem.Application.Licenses.AssignLicense;
+global using CloudSalesSystem.Domain.Accounts;
+global using CloudSalesSystem.Domain.SubscriptionItems;
+global using CloudSalesSystem.Infrastructure;
+global using CloudSalesSystem.Api.Tests.Infrastructure;
+global using FluentAssertions;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.AspNetCore.TestHost;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using Testcontainers.PostgreSql;
+global using Xunit;
+global using CloudSalesSystem.Domain.Licenses;
+global using MediatR;
