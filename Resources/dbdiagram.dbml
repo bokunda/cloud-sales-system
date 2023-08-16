@@ -1,0 +1,62 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Customer {
+  id guid [primary key]
+  name nvarchar(255) [not null, unique]
+  description nvarchar(255)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table Account {
+  id guid [primary key]
+  name nvarchar(255) [not null, unique]
+  description nvarchar(255)
+  customer_id guid [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table CustomerSubscription {
+  customer_id guid [primary key]
+  subscription_id guid  [primary key]
+}
+
+Table Subscription {
+  id guid [primary key]
+  name nvarchar(255) [not null, unique]
+  description nvarchar(255)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table SubscriptionItem {
+  id guid [primary key]
+  subscription_id guid [not null]
+  product_id guid [not null]
+  product_name nvarchar(255) [not null]
+  quantity int [not null]
+  state int [not null]
+  valid_to_date datetime [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table License {
+  id guid [primary key]
+  account_id guid
+  subscription_item_id guid [not null]
+  key nvarchar(255)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Ref: Customer.id - Account.customer_id
+Ref: Customer.id - CustomerSubscription.customer_id
+Ref: Subscription.id - CustomerSubscription.subscription_id
+
+Ref: Subscription.id > SubscriptionItem.subscription_id
+
+Ref: Account.id > License.account_id
+Ref: License.subscription_item_id < SubscriptionItem.id

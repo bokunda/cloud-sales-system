@@ -19,11 +19,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E198BDAA-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSalesSystem.Domain.UnitTests", "..\CloudSalesSystem.Domain.UnitTests\CloudSalesSystem.Domain.UnitTests.csproj", "{D72BC42C-CC76-40EF-9B70-E8C02D4E605C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSalesSystem.Architecture.Tests", "..\CloudSalesSystem.Architecture.Tests\CloudSalesSystem.Architecture.Tests.csproj", "{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSalesSystem.Architecture.Tests", "..\CloudSalesSystem.Architecture.Tests\CloudSalesSystem.Architecture.Tests.csproj", "{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSalesSystem.Application.UnitTests", "..\CloudSalesSystem.Application.UnitTests\CloudSalesSystem.Application.UnitTests.csproj", "{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSalesSystem.Application.UnitTests", "..\CloudSalesSystem.Application.UnitTests\CloudSalesSystem.Application.UnitTests.csproj", "{83C47D15-C53C-4D14-8FA4-39E10BCE60B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSalesSystem.Api.Tests", "..\CloudSalesSystem.Api.Tests\CloudSalesSystem.Api.Tests.csproj", "{0877FB6D-D447-4A1B-B5EC-A5C7F2C0B8F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSalesSystem.Api.Tests", "..\CloudSalesSystem.Api.Tests\CloudSalesSystem.Api.Tests.csproj", "{0877FB6D-D447-4A1B-B5EC-A5C7F2C0B8F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{0BB672C9-DC9F-46DF-B858-B685D3C69526}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{44043CCA-B127-4B48-ADE4-163C36867F4B}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\CludSalesSystemDb.png = Resources\CludSalesSystemDb.png
+		Resources\dbdiagram.dbml = Resources\dbdiagram.dbml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +91,7 @@ Global
 		{B50FB901-6D7F-4BF5-A7E0-577DBF68E86A} = {E198BDAA-7800-418B-B45A-B232F0345F83}
 		{83C47D15-C53C-4D14-8FA4-39E10BCE60B3} = {E198BDAA-7800-418B-B45A-B232F0345F83}
 		{0877FB6D-D447-4A1B-B5EC-A5C7F2C0B8F1} = {E198BDAA-7800-418B-B45A-B232F0345F83}
+		{44043CCA-B127-4B48-ADE4-163C36867F4B} = {0BB672C9-DC9F-46DF-B858-B685D3C69526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86AE6888-9D89-4CB7-918F-72F30024A42E}
