@@ -4,13 +4,16 @@ internal sealed class RevokeServiceLicenseCommandHandler : IRequestHandler<Revok
 {
     private readonly ILicenseRepository _licenseRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
     public RevokeServiceLicenseCommandHandler(
         ILicenseRepository licenseRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
         _licenseRepository = licenseRepository;
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public async Task<RevokeServiceLicenseResponse> Handle(RevokeServiceLicenseCommand request, CancellationToken cancellationToken)
@@ -23,8 +26,11 @@ internal sealed class RevokeServiceLicenseCommandHandler : IRequestHandler<Revok
         }
 
         license.RemoveAccount();
+
+        var mappedResult = _mapper.Map<RevokeServiceLicenseResponse>(license);
+
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new RevokeServiceLicenseResponse();
+        return mappedResult;
     }
 }

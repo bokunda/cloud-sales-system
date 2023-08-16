@@ -1,3 +1,3 @@
 ﻿namespace CloudSalesSystem.Application.SubscriptionItems.UpdateValidTo;
 
-public sealed record UpdateValidToSubscriptionItemResponse();
+public sealed record UpdateValidToSubscriptionItemResponse(Guid SubscriptionItemId);

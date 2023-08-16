@@ -14,6 +14,6 @@ internal sealed class GetCloudServiceDetailsQueryHandler : IRequestHandler<GetCl
     public async Task<GetCloudServiceDetailsResponse> Handle(GetCloudServiceDetailsQuery request, CancellationToken cancellationToken)
     {
         var result = await _cloudComputingService.GetServiceDetails(request.ServiceId, cancellationToken);
-        return new(result.Id, result.Name, result.Description, result.Price);
+        return _mapper.Map<GetCloudServiceDetailsResponse>(result);
     }
 }

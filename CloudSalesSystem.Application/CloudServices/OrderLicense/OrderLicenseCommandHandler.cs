@@ -37,20 +37,12 @@ internal sealed class OrderLicenseCommandHandler : IRequestHandler<OrderLicenseC
             request.Amount,
             request.ValidToDate);
 
-        // Store db entity
         _subscriptionItemRepository.Add(subscriptionItem);
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        // TODO: Use auto-mapper
-        var mappedResponse = new OrderLicenseResponse(
-            result.TransactionId,
-            result.TransactionDateTime,
-            result.ServiceId,
-            serviceDetails.Name,
-            result.TotalItems,
-            result.PricePerItem,
-            result.TotalPrice,
-            result.ValidToDate);
+        var mappedResponse = _mapper.Map<OrderLicenseResponse>(result);
+        mappedResponse.ServiceName = serviceDetails.Name;
+
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return mappedResponse;
     }

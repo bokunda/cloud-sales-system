@@ -6,17 +6,20 @@ internal sealed class UpdateValidToSubscriptionItemCommandHandler : IRequestHand
     private readonly ILicenseRepository _licenseRepository;
     private readonly ISubscriptionItemRepository _subscriptionItemRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
     public UpdateValidToSubscriptionItemCommandHandler(
         ICloudComputingService cloudComputingService,
         ILicenseRepository licenseRepository,
         ISubscriptionItemRepository subscriptionItemRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
         _cloudComputingService = cloudComputingService;
         _licenseRepository = licenseRepository;
         _subscriptionItemRepository = subscriptionItemRepository;
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public async Task<UpdateValidToSubscriptionItemResponse> Handle(UpdateValidToSubscriptionItemCommand request, CancellationToken cancellationToken)
@@ -48,8 +51,10 @@ internal sealed class UpdateValidToSubscriptionItemCommandHandler : IRequestHand
 
         subscriptionItem.SetValidTo(request.ValidToDate);
 
+        var mappedResult = _mapper.Map<UpdateValidToSubscriptionItemResponse>(subscriptionItem);
+
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new UpdateValidToSubscriptionItemResponse();
+        return mappedResult;
     }
 }

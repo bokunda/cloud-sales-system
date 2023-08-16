@@ -6,17 +6,20 @@ internal sealed class UpdateSubscriptionItemQuantityCommandHandler : IRequestHan
     private readonly ISubscriptionItemRepository _subscriptionItemRepository;
     private readonly ILicenseRepository _licenseRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
     public UpdateSubscriptionItemQuantityCommandHandler(
         ICloudComputingService cloudComputingService,
         ISubscriptionItemRepository subscriptionItemRepository,
         ILicenseRepository licenseRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
         _cloudComputingService = cloudComputingService;
         _subscriptionItemRepository = subscriptionItemRepository;
         _licenseRepository = licenseRepository;
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public async Task<UpdateSubscriptionItemQuantityResponse> Handle(UpdateSubscriptionItemQuantityCommand request, CancellationToken cancellationToken)
@@ -52,10 +55,12 @@ internal sealed class UpdateSubscriptionItemQuantityCommandHandler : IRequestHan
         // Set the data
         subscriptionItem.SetQuantity(request.Quantity);
 
+        var mappedResult = _mapper.Map<UpdateSubscriptionItemQuantityResponse>(subscriptionItem);
+
         // Preserve changes
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new UpdateSubscriptionItemQuantityResponse(true);
+        return mappedResult;
     }
 
     private async Task HandleUnassignedLicenses(CancellationToken cancellationToken, ICollection<License> revokedLicenses,

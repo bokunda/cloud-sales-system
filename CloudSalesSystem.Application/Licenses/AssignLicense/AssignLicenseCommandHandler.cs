@@ -5,17 +5,20 @@ internal sealed class AssignLicenseCommandHandler : IRequestHandler<AssignLicens
     private readonly ILicenseRepository _licenseRepository;
     private readonly ISubscriptionItemRepository _subscriptionItemRepository;
     private readonly ICloudComputingService _cloudComputingService;
+    private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
     public AssignLicenseCommandHandler(
         ILicenseRepository licenseRepository,
         ISubscriptionItemRepository subscriptionItemRepository,
         ICloudComputingService cloudComputingService,
+        IMapper mapper,
         IUnitOfWork unitOfWork)
     {
         _licenseRepository = licenseRepository;
         _subscriptionItemRepository = subscriptionItemRepository;
         _cloudComputingService = cloudComputingService;
+        _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
 
@@ -54,9 +57,10 @@ internal sealed class AssignLicenseCommandHandler : IRequestHandler<AssignLicens
             _licenseRepository.Add(unassignedLicense);
         }
 
+        var mappedResult = _mapper.Map<AssignLicenseResponse>(unassignedLicense);
+
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        // TODO: Use auto-mapper
-        return new AssignLicenseResponse(request.AccountId, request.SubscriptionItemId, unassignedLicense.Key!);
+        return mappedResult;
     }
 }
