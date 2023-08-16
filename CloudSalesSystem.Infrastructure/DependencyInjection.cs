@@ -6,6 +6,7 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddTransient<ICurrentUserProvider, CurrentUserProvider>();
         services.AddTransient<IDateTimeProvider, DateTimeProvider>();
         services.AddTransient<ICloudComputingService, CloudComputingService>();
         services.AddTransient<CloudComputingHttpClient>();

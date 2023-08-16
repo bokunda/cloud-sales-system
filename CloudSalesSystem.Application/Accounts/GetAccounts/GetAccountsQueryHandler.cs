@@ -1,12 +1,18 @@
-﻿namespace CloudSalesSystem.Application.Accounts.GetAccounts;
+﻿using CloudSalesSystem.Domain.Identity;
+
+namespace CloudSalesSystem.Application.Accounts.GetAccounts;
 
 internal sealed class GetAccountsQueryHandler : IPagedRequestHandler<GetAccountsQuery, AccountResponse>
 {
     private readonly ISqlConnectionFactory _sqlConnectionFactory;
+    private readonly ICurrentUserProvider _currentUserProvider;
 
-    public GetAccountsQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
+    public GetAccountsQueryHandler(
+        ISqlConnectionFactory sqlConnectionFactory,
+        ICurrentUserProvider currentUserProvider)
     {
         _sqlConnectionFactory = sqlConnectionFactory;
+        _currentUserProvider = currentUserProvider;
     }
 
     public async Task<PagedResponse<AccountResponse>> Handle(GetAccountsQuery request, CancellationToken cancellationToken)
@@ -16,14 +22,14 @@ internal sealed class GetAccountsQueryHandler : IPagedRequestHandler<GetAccounts
         var totalCount = await connection
             .ExecuteScalarAsync<long>(
                 GetAccountsCountQuery(),
-                new { request.CustomerId });
+                new { _currentUserProvider.CustomerId });
 
         var accounts = await connection
             .QueryAsync<AccountResponse>(
                 GetAccountsQuery(),
                 new
                 {
-                    request.CustomerId, 
+                    _currentUserProvider.CustomerId, 
                     request.PageSize, 
                     Offset = (request.PageNumber - 1) * request.PageSize
                 });

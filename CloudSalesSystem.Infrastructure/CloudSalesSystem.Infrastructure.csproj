@@ -24,6 +24,7 @@
 	<ItemGroup>
 	  <Folder Include="CloudComputing\Mock\" />
 	  <Folder Include="Migrations\" />
+	  <Folder Include="Identity\" />
 	  <Folder Include="Repositories\" />
 	</ItemGroup>
 

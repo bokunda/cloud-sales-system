@@ -10,6 +10,7 @@
 		<Folder Include="Accounts\Events\" />
 		<Folder Include="CustomerSubscriptions\" />
 		<Folder Include="Customers\Events\" />
+		<Folder Include="Identity\" />
 		<Folder Include="Repositories\" />
 		<Folder Include="Shared\" />
 		<Folder Include="Subscriptions\Events\" />
