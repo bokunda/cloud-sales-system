@@ -11,11 +11,11 @@ public class LicensesController : ControllerBase
         _sender = sender;
     }
 
-    [HttpPost("order-service-license")]
+    [HttpPost("assign-license")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> OrderServiceLicense([FromBody] AssignLicenseCommand request,
+    public async Task<IActionResult> AssignLicense([FromBody] AssignLicenseCommand request,
         CancellationToken cancellationToken)
     {
         var result = await _sender.Send(request, cancellationToken);

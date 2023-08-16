@@ -41,6 +41,7 @@ internal sealed class OrderLicenseCommandHandler : IRequestHandler<OrderLicenseC
 
         var mappedResponse = _mapper.Map<OrderLicenseResponse>(result);
         mappedResponse.ServiceName = serviceDetails.Name;
+        mappedResponse.SubscriptionItemId = subscriptionItem.Id;
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
