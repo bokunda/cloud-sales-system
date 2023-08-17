@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-17T00:12:28.916Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="b3fPh4XsluLm6iioKwjX" version="21.1.1" type="device" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-08-17T00:15:00.582Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="M5aSddZEox5YbyFoR__2" version="21.1.1" type="device" pages="3">
   <diagram name="Infrastructure HLA" id="PkbeFsFQLOZ5x-pmf3iw">
     <mxGraphModel dx="1537" dy="1406" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -477,7 +477,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="h54WNxDeRkiYh9RRA_kG" name="Services HLA">
-    <mxGraphModel dx="1956" dy="1789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1345" dy="1230" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -589,7 +589,7 @@
             <mxPoint x="12" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9v93ZXnjpC46HqgOu5vM-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="9v93ZXnjpC46HqgOu5vM-9">
+        <mxCell id="9v93ZXnjpC46HqgOu5vM-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9v93ZXnjpC46HqgOu5vM-9" target="0RbEMYmqIvCmLQGYnShm-29">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="343" y="227" as="sourcePoint" />
             <mxPoint x="746" y="387" as="targetPoint" />
@@ -709,7 +709,7 @@
         <mxCell id="-TkG_Pq7kfwyXw4DJgHa-6" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="253" y="375" width="134" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="-TkG_Pq7kfwyXw4DJgHa-1" value="Order Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-6">
+        <mxCell id="-TkG_Pq7kfwyXw4DJgHa-1" value="Licensing Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-6">
           <mxGeometry width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-TkG_Pq7kfwyXw4DJgHa-5" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-6">
