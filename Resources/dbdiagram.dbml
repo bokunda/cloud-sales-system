@@ -56,7 +56,7 @@ Ref: Customer.id - Account.customer_id
 Ref: Customer.id - CustomerSubscription.customer_id
 Ref: Subscription.id - CustomerSubscription.subscription_id
 
-Ref: Subscription.id > SubscriptionItem.subscription_id
+Ref: Subscription.id < SubscriptionItem.subscription_id
 
-Ref: Account.id > License.account_id
-Ref: License.subscription_item_id < SubscriptionItem.id
+Ref: Account.id < License.account_id
+Ref: License.subscription_item_id > SubscriptionItem.id
