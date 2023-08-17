@@ -2,7 +2,7 @@
 This is a solution for Cloud Sales System techical exercise.
 
 ## Description
-Project owner wants to implement a solution for cloud sales. Project owner has a business partner, a Cloud Computing Provider (called CCP from now on). The CCP offers an API that Cus can use to automate the business.
+Project owner wants to implement a solution for cloud sales. Project owner has a business partner, a Cloud Computing Provider (called CCP from now on). The CCP offers an API that Customer can use to automate the business.
 
 Solution should provide customers to buy and manage software solutions offered by CCP. Each
 purchased software is tied to a single account. Each customer can have multiple accounts.
