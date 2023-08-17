@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-17T01:00:02.602Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="mpv7pR3AFH3PoO8r5kYY" version="21.1.1" type="device" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-08-17T01:19:46.078Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="CPMuPIz8pWPlgIxisQ-_" version="21.1.1" type="device" pages="3">
   <diagram name="Infrastructure HLA" id="PkbeFsFQLOZ5x-pmf3iw">
     <mxGraphModel dx="1537" dy="1406" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -477,7 +477,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="h54WNxDeRkiYh9RRA_kG" name="Services HLA">
-    <mxGraphModel dx="1266" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="936" dy="856" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -536,7 +536,7 @@
           <mxGeometry x="3.75" y="25" width="42.5" height="42.5" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-1" value="Order Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="253" y="260" width="120" height="30" as="geometry" />
+          <mxGeometry x="253" y="266" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="9v93ZXnjpC46HqgOu5vM-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -553,15 +553,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-9" value="Document Generator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
-          <mxGeometry x="686" y="260" width="120" height="30" as="geometry" />
+          <mxGeometry x="686" y="266" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-11" value="Email Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
-          <mxGeometry x="889" y="260" width="120" height="30" as="geometry" />
+          <mxGeometry x="889" y="266" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9v93ZXnjpC46HqgOu5vM-21" target="9v93ZXnjpC46HqgOu5vM-9">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="503" y="255" as="sourcePoint" />
-            <mxPoint x="553" y="205" as="targetPoint" />
+            <mxPoint x="503" y="261" as="sourcePoint" />
+            <mxPoint x="553" y="211" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-19" value="AWS SQS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="9v93ZXnjpC46HqgOu5vM-13">
@@ -570,12 +570,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-21" value="Invoice Processor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
-          <mxGeometry x="473" y="260" width="120" height="30" as="geometry" />
+          <mxGeometry x="473" y="266" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9v93ZXnjpC46HqgOu5vM-1" target="9v93ZXnjpC46HqgOu5vM-21">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="387" y="285" as="sourcePoint" />
-            <mxPoint x="557" y="285" as="targetPoint" />
+            <mxPoint x="387" y="291" as="sourcePoint" />
+            <mxPoint x="557" y="291" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-23" value="AWS SQS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="9v93ZXnjpC46HqgOu5vM-22">
@@ -626,16 +626,16 @@
           <mxGeometry x="262" y="65" width="35" height="35.07" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-48" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="1">
-          <mxGeometry x="356" y="273" width="31" height="31" as="geometry" />
+          <mxGeometry x="356" y="279" width="31" height="31" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-51" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="1">
-          <mxGeometry x="577" y="273" width="31" height="31" as="geometry" />
+          <mxGeometry x="577" y="279" width="31" height="31" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-52" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="1">
-          <mxGeometry x="792" y="273" width="31" height="31" as="geometry" />
+          <mxGeometry x="792" y="279" width="31" height="31" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-53" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="1">
-          <mxGeometry x="993" y="273" width="31" height="31" as="geometry" />
+          <mxGeometry x="993" y="279" width="31" height="31" as="geometry" />
         </mxCell>
         <mxCell id="9v93ZXnjpC46HqgOu5vM-54" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://miro.medium.com/v2/resize:fit:401/0*rOjzHpnCXl4iklVC.png;" vertex="1" parent="1">
           <mxGeometry x="93" y="220.04000000000002" width="131" height="83.96" as="geometry" />
@@ -645,7 +645,7 @@
             <mxPoint x="563" y="173" as="sourcePoint" />
             <mxPoint x="950" y="258" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="950" y="223" />
+              <mxPoint x="950" y="187" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -716,7 +716,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="-TkG_Pq7kfwyXw4DJgHa-9" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="253" y="208" width="134" height="45" as="geometry" />
+          <mxGeometry x="253" y="172" width="134" height="45" as="geometry" />
         </mxCell>
         <mxCell id="0RbEMYmqIvCmLQGYnShm-15" value="User Management Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-9">
           <mxGeometry width="120" height="30" as="geometry" />
@@ -725,7 +725,7 @@
           <mxGeometry x="103" y="14" width="31" height="31" as="geometry" />
         </mxCell>
         <mxCell id="-TkG_Pq7kfwyXw4DJgHa-10" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="253" y="153" width="134" height="42" as="geometry" />
+          <mxGeometry x="253" y="130" width="134" height="42" as="geometry" />
         </mxCell>
         <mxCell id="0RbEMYmqIvCmLQGYnShm-14" value="Identity Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-10">
           <mxGeometry width="120" height="30" as="geometry" />
@@ -733,11 +733,26 @@
         <mxCell id="9v93ZXnjpC46HqgOu5vM-40" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="-TkG_Pq7kfwyXw4DJgHa-10">
           <mxGeometry x="103" y="11" width="31" height="31" as="geometry" />
         </mxCell>
+        <mxCell id="vMMyMCUxgUSekhDAKr7K-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="253" y="219" width="134" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="vMMyMCUxgUSekhDAKr7K-2" value="Sales Products Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="vMMyMCUxgUSekhDAKr7K-1">
+          <mxGeometry width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vMMyMCUxgUSekhDAKr7K-3" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-04/K8S-logo.png;" vertex="1" parent="vMMyMCUxgUSekhDAKr7K-1">
+          <mxGeometry x="103" y="14" width="31" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="vMMyMCUxgUSekhDAKr7K-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="vMMyMCUxgUSekhDAKr7K-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="193" y="254.89634103019523" as="sourcePoint" />
+            <mxPoint x="409" y="238" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="ma3pU_1qIbkqvqsUC9QM" name="Order Service Deep Dive">
-    <mxGraphModel dx="1655" dy="1514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1345" dy="1230" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
